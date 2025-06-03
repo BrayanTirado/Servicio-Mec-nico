@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.el_taller_de_adso;
+package com.adso.el_taller_de_adso;
 
 /**
  *
@@ -11,6 +11,6 @@ package com.mycompany.el_taller_de_adso;
 public class El_Taller_De_ADSO {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("!");
     }
 }
