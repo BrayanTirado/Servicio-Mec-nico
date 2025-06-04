@@ -10,8 +10,8 @@ import java.sql.SQLException;
 
 public class ConexionBD {
     private static final String URL = "jdbc:postgresql://setviciomecanico-leftyrancuentabot-144a.g.aivencloud.com:14583/tallermecanico";
-    private static final String USER = System.getenv("avnadmin");
-    private static final String PASSWORD = System.getenv("AVNS_7iy_JMEraYJqRxquMqF");
+    private static final String USER = "avnadmin";
+    private static final String PASSWORD = "AVNS_7iy_JMEraYJqRxquMqF";
     
 
     public static Connection conectar() {
