@@ -13,6 +13,13 @@ public class MarcoVehiculo extends javax.swing.JInternalFrame {
 
     public MarcoVehiculo() {
         initComponents();
+        vehiculoDAO = new VehiculoDAO();
+        actualizarComboClientes();
+        // Añadir listeners a los botones
+        create.addActionListener(e -> registrarVehiculo());
+        edit.addActionListener(e -> editarVehiculo());
+        delete.addActionListener(e -> eliminarVehiculo());
+    
     }
 
     
@@ -160,7 +167,84 @@ public class MarcoVehiculo extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+// Métodos de lógica
+    private void actualizarComboClientes() {
+        cmbClientes.removeAllItems();
+        List<String> clientes = vehiculoDAO.listarClientes();
+        for (String cliente : clientes) {
+            cmbClientes.addItem(cliente);
+        }
+    }
 
+    private void registrarVehiculo() {
+        try {
+            String placa = txtPlaca.getText().trim();
+            String marca = txtMarca.getText().trim();
+            String modelo = txtModelo.getText().trim();
+            int anio = Integer.parseInt(txtAnio.getText().trim());
+            String tipo = txtTipo.getText().trim();
+            String clienteSeleccionado = (String) cmbClientes.getSelectedItem();
+
+            if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() || tipo.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (clienteSeleccionado == null) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int clienteId = Integer.parseInt(clienteSeleccionado.split(" - ")[0]);
+            Vehiculo vehiculo = new Vehiculo(0, placa, marca, modelo, anio, tipo, clienteId);
+            vehiculoDAO.registrarVehiculo(vehiculo);
+            limpiarFormulario();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El año debe ser un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void editarVehiculo() {
+        try {
+            String placa = txtPlaca.getText().trim();
+            String marca = txtMarca.getText().trim();
+            String modelo = txtModelo.getText().trim();
+            int anio = Integer.parseInt(txtAnio.getText().trim());
+            String tipo = txtTipo.getText().trim();
+            String clienteSeleccionado = (String) cmbClientes.getSelectedItem();
+
+            if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() || tipo.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (clienteSeleccionado == null) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int clienteId = Integer.parseInt(clienteSeleccionado.split(" - ")[0]);
+            // Nota: Para editar, necesitaríamos el ID del vehículo, pero este formulario ya no tiene la JTable.
+            // Podrías añadir un campo oculto o un mecanismo para seleccionar el vehículo a editar.
+            JOptionPane.showMessageDialog(this, "Funcionalidad de edición no implementada completamente. Seleccione un vehículo en la consulta primero.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El año debe ser un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void eliminarVehiculo() {
+        // Nota: Para eliminar, necesitaríamos el ID del vehículo, pero este formulario ya no tiene la JTable.
+        JOptionPane.showMessageDialog(this, "Funcionalidad de eliminación no implementada completamente. Seleccione un vehículo en la consulta primero.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    }
+
+    private void limpiarFormulario() {
+        txtPlaca.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtAnio.setText("");
+        txtTipo.setText("");
+        if (cmbClientes.getItemCount() > 0) {
+            cmbClientes.setSelectedIndex(0);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbClientes;
     private javax.swing.JButton create;

@@ -4,17 +4,30 @@
  */
 package com.adso.el_taller_de_adso.vehiculos;
 
-/**
- *
- * @author grove
- */
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 public class ConsultaVehiculo extends javax.swing.JInternalFrame {
+    private VehiculoDAO vehiculoDAO;
 
     /**
      * Creates new form ConsultaVehiculo
      */
     public ConsultaVehiculo() {
-        initComponents();
+        vehiculoDAO = new VehiculoDAO();
+
+        actualizarTablaVehiculos();
+        // Añadir listener para mostrar historial al seleccionar un vehículo
+        tablaVehiculos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    mostrarHistorial();
+                }
+            }
+        });
     }
 
     /**
@@ -33,6 +46,10 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         txtHistorial.setColumns(20);
         txtHistorial.setRows(5);
@@ -77,7 +94,7 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGap(0, 619, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -88,7 +105,7 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addGap(18, 18, 18)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,7 +125,27 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void actualizarTablaVehiculos() {
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"id", "placa", "modelo", "marca", "anio", "tipo"}, 0);
+        List<Vehiculo> vehiculos = vehiculoDAO.listarVehiculos();
+        for (Vehiculo v : vehiculos) {
+            model.addRow(new Object[]{v.getId(), v.getPlaca(), v.getModelo(), v.getMarca(), v.getAnio(), v.getTipo()});
+        }
+        tablaVehiculos.setModel(model);
+    }
 
+    private void mostrarHistorial() {
+        int selectedRow = tablaVehiculos.getSelectedRow();
+        if (selectedRow >= 0) {
+            int vehiculoId = (int) tablaVehiculos.getValueAt(selectedRow, 0);
+            List<String> historial = vehiculoDAO.listarHistorialServicios(vehiculoId);
+            txtHistorial.setText("");
+            for (String servicio : historial) {
+                txtHistorial.append(servicio + "\n");
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

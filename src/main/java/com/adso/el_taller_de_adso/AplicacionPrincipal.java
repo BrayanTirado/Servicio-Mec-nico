@@ -6,6 +6,7 @@ package com.adso.el_taller_de_adso;
 
 
 import com.adso.el_taller_de_adso.servicios.MarcoServicios;
+import com.adso.el_taller_de_adso.vehiculos.ConsultaVehiculo;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
@@ -32,8 +33,9 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemVehiculos = new javax.swing.JMenuItem();
+        menuItemConsultaVehiculos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemGestionServicios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,17 +60,25 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menuItemVehiculos);
 
+        menuItemConsultaVehiculos.setText("Consulta del vehiculo");
+        menuItemConsultaVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConsultaVehiculosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemConsultaVehiculos);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Servicios");
 
-        jMenuItem1.setText("Gestion de servicios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemGestionServicios.setText("Gestion de servicios");
+        menuItemGestionServicios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItemGestionServiciosActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(menuItemGestionServicios);
 
         jMenuBar1.add(jMenu2);
 
@@ -98,12 +108,18 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         marcoVehiculo.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_menuItemVehiculosActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItemGestionServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGestionServiciosActionPerformed
         // TODO add your handling code here:
         MarcoServicios marcoServicios = new MarcoServicios();
         desktopPane.add(marcoServicios);
-       marcoServicios.setVisible(true); 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        marcoServicios.setVisible(true); 
+    }//GEN-LAST:event_menuItemGestionServiciosActionPerformed
+
+    private void menuItemConsultaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaVehiculosActionPerformed
+        ConsultaVehiculo consultaVehiculo = new ConsultaVehiculo();
+        desktopPane.add(consultaVehiculo);
+        consultaVehiculo.setVisible(true);
+    }//GEN-LAST:event_menuItemConsultaVehiculosActionPerformed
 
                                                  
                    
@@ -120,7 +136,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuItemConsultaVehiculos;
+    private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemVehiculos;
     // End of variables declaration//GEN-END:variables
 }
