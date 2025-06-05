@@ -8,6 +8,7 @@ package com.adso.el_taller_de_adso;
 import com.adso.el_taller_de_adso.servicios.MarcoServicios;
 import com.adso.el_taller_de_adso.vehiculos.ConsultaVehiculo;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
+import com.adso.el_taller_de_adso.servicios.HistorialServicios;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -36,6 +37,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         menuItemConsultaVehiculos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuItemGestionServicios = new javax.swing.JMenuItem();
+        menuitemHistorialServicios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +82,14 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(menuItemGestionServicios);
 
+        menuitemHistorialServicios.setText("Historial de servicios");
+        menuitemHistorialServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitemHistorialServiciosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuitemHistorialServicios);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -121,6 +131,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         consultaVehiculo.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaVehiculosActionPerformed
 
+    private void menuitemHistorialServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemHistorialServiciosActionPerformed
+        // TODO add your handling code here:
+        HistorialServicios historialServicios = new HistorialServicios();
+        desktopPane.add(historialServicios);
+        historialServicios.setVisible(true); 
+    }//GEN-LAST:event_menuitemHistorialServiciosActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -139,5 +156,6 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemVehiculos;
+    private javax.swing.JMenuItem menuitemHistorialServicios;
     // End of variables declaration//GEN-END:variables
 }
