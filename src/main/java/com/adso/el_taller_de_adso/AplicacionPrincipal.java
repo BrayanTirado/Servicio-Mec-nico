@@ -5,6 +5,7 @@
 package com.adso.el_taller_de_adso;
 
 
+import com.adso.el_taller_de_adso.servicios.MarcoServicios;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
@@ -31,6 +32,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemVehiculos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +59,18 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenu1.add(menuItemVehiculos);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Servicios");
+
+        jMenuItem1.setText("Gestion de servicios");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -83,6 +98,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         marcoVehiculo.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_menuItemVehiculosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        MarcoServicios marcoServicios = new MarcoServicios();
+        desktopPane.add(marcoServicios);
+       marcoServicios.setVisible(true); 
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -96,7 +118,9 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuItemVehiculos;
     // End of variables declaration//GEN-END:variables
 }
