@@ -107,4 +107,26 @@ public class VehiculoDAO {
         }
         return historial;
     }
+
+    public Vehiculo buscarVehiculoPorId(int id) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vehiculos WHERE id = ?")) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Vehiculo(
+                        rs.getInt("id"),
+                        rs.getString("placa"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getInt("anio"),
+                        rs.getString("tipo"),
+                        rs.getInt("cliente_id")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al buscar vehículo por ID: " + e.getMessage());
+        }
+        return null; // Retorna null si no se encuentra
+    }
 }
