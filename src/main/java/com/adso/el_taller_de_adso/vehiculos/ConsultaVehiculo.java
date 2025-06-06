@@ -94,7 +94,7 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Placa", "Marca", "Modelo", "Anio", "tipo"
+                "ID", "Placa", "Marca", "Modelo", "año", "tipo"
             }
         ));
         jScrollPane3.setViewportView(tablaVehiculos);

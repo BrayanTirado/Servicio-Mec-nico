@@ -80,7 +80,7 @@ public class MarcoVehiculo extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("anio");
+        jLabel5.setText("año");
 
         edit.setText("editar vehiculo");
         edit.addActionListener(new java.awt.event.ActionListener() {
