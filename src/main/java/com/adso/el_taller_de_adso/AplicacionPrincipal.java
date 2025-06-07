@@ -5,7 +5,7 @@
 package com.adso.el_taller_de_adso;
 
 
-import com.adso.el_taller_de_adso.servicios.MarcoServicios;
+import com.adso.el_taller_de_adso.servicios.MarcoServicios2;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
@@ -100,7 +100,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        MarcoServicios marcoServicios = new MarcoServicios();
+        MarcoServicios2 marcoServicios = new MarcoServicios2();
         desktopPane.add(marcoServicios);
        marcoServicios.setVisible(true); 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
