@@ -9,6 +9,7 @@ import com.adso.el_taller_de_adso.servicios.MarcoServicios;
 import com.adso.el_taller_de_adso.vehiculos.ConsultaVehiculo;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 import com.adso.el_taller_de_adso.servicios.HistorialServicios;
+import com.adso.el_taller_de_adso.clientes.MarcoClientes;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -38,6 +39,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         menuItemGestionServicios = new javax.swing.JMenuItem();
         menuitemHistorialServicios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +95,18 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Clientes");
+
+        jMenuItem1.setText("Registrar clientes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +153,12 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         historialServicios.setVisible(true); 
     }//GEN-LAST:event_menuitemHistorialServiciosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        MarcoClientes marcoClientes = new MarcoClientes();
+        desktopPane.add(marcoClientes);
+        marcoClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -152,7 +173,9 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemVehiculos;
