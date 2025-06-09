@@ -7,7 +7,10 @@ package com.adso.el_taller_de_adso.clientes;
 import com.adso.el_taller_de_adso.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,6 +32,23 @@ public class ClienteDAO {
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, "Error al registrar cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             
+        }
+    }
+    
+    public List<Cliente> listarClientes(){
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT * FROM clientes";
+        try (Connection conn = ConexionBD.conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeUpdate()){
+                while(rs.next()){
+                    clientes.add(new cliente(
+                    rs.getInt("id")
+                    rs.getString("nombre")
+                    )
+                }
+            
+        } catch (Exception e) {
         }
     }
 }
