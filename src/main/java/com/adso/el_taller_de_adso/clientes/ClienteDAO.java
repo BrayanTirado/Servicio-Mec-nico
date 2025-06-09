@@ -58,4 +58,29 @@ public class ClienteDAO {
         }
         return clientes;
     }
+    
+    public List<Cliente> buscarCliente(String criterio, String valor){
+        List<Cliente> clientes = new ArrayList<>();
+        String sql = "SELECT * FROM clientes WHERE " + (criterio.equals("documento") ? "documento" : "nombre") +" ILIKE ?";
+        try (Connection conn = ConexionBD.conectar();
+                PreparedStatement stmt = conn.prepareCall(sql)){
+               stmt.setString(1, "%" + valor + "%");
+               ResultSet rs = stmt.executeQuery();
+               while (rs.next()){
+                   clientes.add(new Cliente(
+                       rs.getInt("id"),
+                       rs.getString("nombre"),
+                       rs.getString("documento"),
+                       rs.getString("telefono"),
+                       rs.getString("correo"),
+                       rs.getInt("rol")
+                    
+                    ));
+               }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return clientes;
+    }
 }

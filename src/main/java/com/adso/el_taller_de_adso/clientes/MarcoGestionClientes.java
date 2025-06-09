@@ -4,17 +4,28 @@
  */
 package com.adso.el_taller_de_adso.clientes;
 
+import javax.swing.table.DefaultTableModel;
+import com.adso.el_taller_de_adso.clientes.ClienteDAO;
+import com.adso.el_taller_de_adso.clientes.Cliente;
+import java.util.List;
+
 /**
  *
  * @author axchisan
  */
 public class MarcoGestionClientes extends javax.swing.JInternalFrame {
+public ClienteDAO ClienteDAO;
+public DefaultTableModel modeloTabla;
 
     /**
      * Creates new form MarcoGestionClientes
      */
     public MarcoGestionClientes() {
+        ClienteDAO = new ClienteDAO();
         initComponents();
+        configurartabla();
+        cargarClientes();
+        setSize(800, 600);
     }
 
     /**
@@ -26,21 +37,160 @@ public class MarcoGestionClientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        panelBusqueda = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cbCriterioBusqueda = new javax.swing.JComboBox<>();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        panelEdicion = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblDocumento = new javax.swing.JLabel();
+        txtDocumento = new javax.swing.JTextField();
+        lblTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        lblVacio1 = new javax.swing.JLabel();
+        lblVacio2 = new javax.swing.JLabel();
+        panelBotones = new javax.swing.JPanel();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        panelClientes = new javax.swing.JScrollPane();
+        tablaClientes = new javax.swing.JTable();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("GestionClientes");
+        setPreferredSize(new java.awt.Dimension(800, 600));
+
+        panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Cliente"));
+
+        jLabel1.setText("Criterio");
+        panelBusqueda.add(jLabel1);
+
+        cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Documento", "Nombre" }));
+        panelBusqueda.add(cbCriterioBusqueda);
+
+        txtBuscar.setMinimumSize(new java.awt.Dimension(200, 25));
+        panelBusqueda.add(txtBuscar);
+
+        btnBuscar.setText("Buscar");
+        panelBusqueda.add(btnBuscar);
+
+        getContentPane().add(panelBusqueda, java.awt.BorderLayout.PAGE_START);
+
+        panelEdicion.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Cliente"));
+        panelEdicion.setPreferredSize(new java.awt.Dimension(0, 200));
+        panelEdicion.setLayout(new java.awt.GridLayout(6, 2, 5, 5));
+
+        lblNombre.setText("Nombre");
+        panelEdicion.add(lblNombre);
+        panelEdicion.add(txtNombre);
+
+        lblDocumento.setText("Documento");
+        panelEdicion.add(lblDocumento);
+        panelEdicion.add(txtDocumento);
+
+        lblTelefono.setText("Teléfono");
+        panelEdicion.add(lblTelefono);
+        panelEdicion.add(txtTelefono);
+
+        lblCorreo.setText("Correo");
+        panelEdicion.add(lblCorreo);
+        panelEdicion.add(txtCorreo);
+
+        lblVacio1.setText("jLabel7");
+        panelEdicion.add(lblVacio1);
+
+        lblVacio2.setText("jLabel6");
+        panelEdicion.add(lblVacio2);
+
+        panelBotones.setAlignmentY(5.0F);
+
+        btnActualizar.setText("Actualizar");
+        panelBotones.add(btnActualizar);
+
+        btnEliminar.setText("Eliminar");
+        panelBotones.add(btnEliminar);
+
+        btnLimpiar.setText("Limpiar");
+        panelBotones.add(btnLimpiar);
+
+        panelEdicion.add(panelBotones);
+
+        getContentPane().add(panelEdicion, java.awt.BorderLayout.PAGE_END);
+
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Documento", "Teléfono", "Correo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        panelClientes.setViewportView(tablaClientes);
+
+        getContentPane().add(panelClientes, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cbCriterioBusqueda;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblDocumento;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblVacio1;
+    private javax.swing.JLabel lblVacio2;
+    private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelBusqueda;
+    private javax.swing.JScrollPane panelClientes;
+    private javax.swing.JPanel panelEdicion;
+    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+private void configurartabla(){
+    modeloTabla = (DefaultTableModel) tablaClientes.getModel();
+    modeloTabla.setRowCount(0);
+}
+private void cargarClientes(){
+    modeloTabla.setRowCount(0);
+    List<Cliente> clientes = ClienteDAO.listarClientes();
+    for (Cliente cliente : clientes){
+        modeloTabla.addRow(new Object[]{
+            cliente.getId(),
+            cliente.getNombre(),
+            cliente.getDocumento(),
+            cliente.getTelefono(),
+            cliente.getCorreo(),
+            cliente.getRol()
+        });
+    }
+}
 }

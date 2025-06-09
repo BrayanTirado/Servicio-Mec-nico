@@ -10,6 +10,7 @@ import com.adso.el_taller_de_adso.vehiculos.ConsultaVehiculo;
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 import com.adso.el_taller_de_adso.servicios.HistorialServicios;
 import com.adso.el_taller_de_adso.clientes.MarcoClientes;
+import com.adso.el_taller_de_adso.clientes.MarcoGestionClientes;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -40,7 +41,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         menuItemGestionServicios = new javax.swing.JMenuItem();
         menuitemHistorialServicios = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuItemRegistrarClientes = new javax.swing.JMenuItem();
+        menuItemGestionarClientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +99,21 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Clientes");
 
-        jMenuItem1.setText("Registrar clientes");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItemRegistrarClientes.setText("Registrar clientes");
+        menuItemRegistrarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItemRegistrarClientesActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(menuItemRegistrarClientes);
+
+        menuItemGestionarClientes.setText("Gestionar clientes");
+        menuItemGestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemGestionarClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemGestionarClientes);
 
         jMenuBar1.add(jMenu3);
 
@@ -153,11 +163,17 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         historialServicios.setVisible(true); 
     }//GEN-LAST:event_menuitemHistorialServiciosActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItemRegistrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRegistrarClientesActionPerformed
         MarcoClientes marcoClientes = new MarcoClientes();
         desktopPane.add(marcoClientes);
         marcoClientes.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItemRegistrarClientesActionPerformed
+
+    private void menuItemGestionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGestionarClientesActionPerformed
+        MarcoGestionClientes marcoGestionClientes = new MarcoGestionClientes();
+        desktopPane.add(marcoGestionClientes);
+        marcoGestionClientes.setVisible(true);
+    }//GEN-LAST:event_menuItemGestionarClientesActionPerformed
 
                                                  
                    
@@ -175,9 +191,10 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
+    private javax.swing.JMenuItem menuItemGestionarClientes;
+    private javax.swing.JMenuItem menuItemRegistrarClientes;
     private javax.swing.JMenuItem menuItemVehiculos;
     private javax.swing.JMenuItem menuitemHistorialServicios;
     // End of variables declaration//GEN-END:variables
