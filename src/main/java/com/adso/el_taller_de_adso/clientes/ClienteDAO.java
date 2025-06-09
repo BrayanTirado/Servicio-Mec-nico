@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ClienteDAO {
     public void registrarcliente(Cliente cliente){
-        String sql = "INSERT INTO clientes (nombre, documento, tlefono, correo, rol) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO clientes (nombre, documento, telefono, correo, rol) VALUES (?, ?, ?, ?, ?)";
         try(Connection conn = ConexionBD.conectar();
            PreparedStatement stmt = conn.prepareStatement(sql)){
            stmt.setString(1, cliente.getNombre());
