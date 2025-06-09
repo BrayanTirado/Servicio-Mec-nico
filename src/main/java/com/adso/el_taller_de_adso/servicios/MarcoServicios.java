@@ -1,8 +1,6 @@
-
-
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nfs://netbeans/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nfs://netbeans/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package com.adso.el_taller_de_adso.servicios;
 import com.adso.el_taller_de_adso.servicios.ServicioDAO;
@@ -11,19 +9,36 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
-import java.util.List;                                                                                               
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  *
  * @author USUARIO
  */
 public class MarcoServicios extends javax.swing.JInternalFrame {
 
+    private ServicioDAO servicioDAO = new ServicioDAO();
+    private DefaultTableModel tableModel;
+
     /**
      * Creates new form MarcoServicios
      */
     public MarcoServicios() {
         initComponents();
+        initializeComponents();
     }
+
+    private void initializeComponents() {
+    // Populate combo boxes with data from the database
+    jComboBoxseleccioncliente.setModel(new DefaultComboBoxModel<>(servicioDAO.getAllClientes().toArray(new String[0])));
+    jComboBoxseleccionvehiculo.setModel(new DefaultComboBoxModel<>(servicioDAO.getAllVehiculos().toArray(new String[0])));
+    jComboBoxtipodeservicio.setModel(new DefaultComboBoxModel<>(new String[]{"cambio de aceite", "lavado", "mantenimiento general"}));
+
+    // Initialize table model
+    tableModel = (DefaultTableModel) jTableproductosseleccionados.getModel();
+    jTextFieldtotalservicio.setEditable(false); // Make total read-only
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,20 +52,21 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxtipodeservicio = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxseleccionvehiculo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jComboBoxseleccioncliente = new javax.swing.JComboBox<>();
+        jButtonagregarrepuestos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTableproductosseleccionados = new javax.swing.JTable();
+        jButtonguardarservicio = new javax.swing.JButton();
+        jTextFieldtotalservicio = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jDateChooserfechadelservicio = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -60,29 +76,23 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha del servicio:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Selecciona el cliente:");
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tipo de servicio:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Selecciona el vehiculo:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton1.setText("Agregar repuestos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonagregarrepuestos.setText("Agregar repuestos");
+        jButtonagregarrepuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonagregarrepuestosActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableproductosseleccionados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,14 +103,19 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                 "Nombre", "Descripción", "Precio unitario", "Cantidad disponible"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableproductosseleccionados);
 
-        jButton2.setText("Guardar Servicio");
-
-        jTextField1.setText("0");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonguardarservicio.setText("Guardar Servicio");
+        jButtonguardarservicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jButtonguardarservicioActionPerformed(evt);
+            }
+        });
+
+        jTextFieldtotalservicio.setText("0");
+        jTextFieldtotalservicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldtotalservicioActionPerformed(evt);
             }
         });
 
@@ -128,37 +143,38 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(14, 14, 14)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBoxseleccionvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jComboBoxtipodeservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jComboBoxseleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel3)))
-                                    .addComponent(jLabel4))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jDateChooserfechadelservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(133, 133, 133)
                                         .addComponent(jLabel6))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(75, 75, 75)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel7))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
-                        .addComponent(jButton2))
+                        .addComponent(jButtonguardarservicio))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(jButton1))
+                        .addComponent(jButtonagregarrepuestos))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addComponent(jTextFieldtotalservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,27 +196,28 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addComponent(jDateChooserfechadelservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxtipodeservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxseleccioncliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(12, 12, 12)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBoxseleccionvehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)))
-                .addComponent(jButton1)
+                .addComponent(jButtonagregarrepuestos)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jButton2))
+                        .addComponent(jButtonguardarservicio))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldtotalservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)))
                 .addGap(23, 23, 23))
         );
@@ -224,21 +241,108 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonguardarservicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonguardarservicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (jDateChooserfechadelservicio.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una fecha.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        if (tableModel.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Por favor, agrega al menos un repuesto antes de guardar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        Servicio servicio = new Servicio();
+        servicio.setFecha(new Date(jDateChooserfechadelservicio.getDate().getTime()));
+        servicio.setTipo((String) jComboBoxtipodeservicio.getSelectedItem());
+        // Replace comma with dot for proper parsing
+        String costText = jTextFieldtotalservicio.getText().replace(",", ".");
+        servicio.setCosto(Double.parseDouble(costText));
+        servicio.setPagado(false); // Default to false, can be updated later
+        servicio.setVehiculoId(servicioDAO.getVehiculoId((String) jComboBoxseleccionvehiculo.getSelectedItem()));
+        servicio.setClienteId(servicioDAO.getClienteId((String) jComboBoxseleccioncliente.getSelectedItem()));
+
+        try {
+            servicioDAO.addServicio(servicio, tableModel);
+            JOptionPane.showMessageDialog(this, "Servicio guardado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el servicio: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonguardarservicioActionPerformed
+
+private void jButtonagregarrepuestosActionPerformed(java.awt.event.ActionEvent evt) {
+    String[] products = servicioDAO.getAllProductos().toArray(new String[0]);
+    String selectedProduct = (String) JOptionPane.showInputDialog(
+        this, "Selecciona un repuesto:", "Agregar Repuestos",
+        JOptionPane.PLAIN_MESSAGE, null, products, products[0]);
+    
+    if (selectedProduct != null) {
+        String quantityStr = JOptionPane.showInputDialog(this, "Ingresa la cantidad:", "1");
+        try {
+            int quantity = Integer.parseInt(quantityStr != null ? quantityStr.trim() : "0");
+            if (quantity > 0) {
+                int availableStock = servicioDAO.getProductoStock(selectedProduct);
+                if (quantity <= availableStock) {
+                    double price = servicioDAO.getPrecioProducto(selectedProduct);
+                    String description = servicioDAO.getProductoDescription(selectedProduct) != null ? 
+                                        servicioDAO.getProductoDescription(selectedProduct) : "Sin descripción";
+                    tableModel.addRow(new Object[]{selectedProduct, description, price, quantity});
+                    updateTotalCost();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Stock insuficiente. Disponible: " + availableStock, "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La cantidad debe ser mayor a 0.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingresa un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+    
+
+    private void jTextFieldtotalservicioActionPerformed(java.awt.event.ActionEvent evt) {
+        // No action needed here unless you want to trigger something specific
+    }
+
+    private void updateTotalCost() {
+        double total = 0;
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            Object priceObj = tableModel.getValueAt(i, 2);
+            Object quantityObj = tableModel.getValueAt(i, 3);
+            if (priceObj != null && quantityObj != null) {
+                double price = (priceObj instanceof Number) ? ((Number) priceObj).doubleValue() : 0.0;
+                int quantity = (quantityObj instanceof Number) ? ((Number) quantityObj).intValue() : 0;
+                total += price * quantity;
+            }
+        }
+        // Use NumberFormat to ensure consistent decimal formatting
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
+        if (nf instanceof java.text.DecimalFormat) {
+            ((java.text.DecimalFormat) nf).setGroupingUsed(false); // Disable grouping (e.g., no commas as thousand separators)
+        }
+        jTextFieldtotalservicio.setText(nf.format(total));
+    }
+
+    private void clearForm() {
+        jDateChooserfechadelservicio.setDate(null);
+        jComboBoxtipodeservicio.setSelectedIndex(0);
+        jComboBoxseleccioncliente.setSelectedIndex(0);
+        jComboBoxseleccionvehiculo.setSelectedIndex(0);
+        tableModel.setRowCount(0);
+        jTextFieldtotalservicio.setText("0");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton jButtonagregarrepuestos;
+    private javax.swing.JButton jButtonguardarservicio;
+    private javax.swing.JComboBox<String> jComboBoxseleccioncliente;
+    private javax.swing.JComboBox<String> jComboBoxseleccionvehiculo;
+    private javax.swing.JComboBox<String> jComboBoxtipodeservicio;
+    private com.toedter.calendar.JDateChooser jDateChooserfechadelservicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -249,7 +353,7 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTableproductosseleccionados;
+    private javax.swing.JTextField jTextFieldtotalservicio;
     // End of variables declaration//GEN-END:variables
 }

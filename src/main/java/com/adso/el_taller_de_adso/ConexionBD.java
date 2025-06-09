@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nfs://netbeans/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nfs://netbeans/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.adso.el_taller_de_adso;
 
@@ -12,7 +12,6 @@ public class ConexionBD {
     private static final String URL = "jdbc:postgresql://setviciomecanico-leftyrancuentabot-144a.g.aivencloud.com:14583/tallermecanico";
     private static final String USER = "avnadmin";
     private static final String PASSWORD = "AVNS_7iy_JMEraYJqRxquMqF";
-    
 
     public static Connection conectar() {
         Connection conn = null;
@@ -31,8 +30,14 @@ public class ConexionBD {
     }
 
     public static void cerrar(Connection conn) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (conn != null) {
+            try {
+                conn.close();
+                System.out.println("✅ Conexión cerrada exitosamente.");
+            } catch (SQLException e) {
+                System.out.println("❌ Error al cerrar la conexión:");
+                e.printStackTrace();
+            }
+        }
     }
 }
-
-

@@ -65,6 +65,12 @@ public class MarcoVehiculo extends javax.swing.JInternalFrame {
             }
         });
 
+        cmbClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClientesActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Gestión de Vehículos");
 
         jLabel2.setText("placa");
@@ -225,6 +231,10 @@ public class MarcoVehiculo extends javax.swing.JInternalFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         eliminarVehiculo();
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void cmbClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbClientesActionPerformed
 
    private void actualizarComboClientes() {
         cmbClientes.removeAllItems();
