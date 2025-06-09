@@ -15,17 +15,18 @@ import javax.swing.JOptionPane;
  * @author axchisan
  */
 public class MarcoGestionClientes extends javax.swing.JInternalFrame {
-public ClienteDAO ClienteDAO;
+public ClienteDAO clienteDAO;
 public DefaultTableModel modeloTabla;
 
     /**
      * Creates new form MarcoGestionClientes
      */
     public MarcoGestionClientes() {
-        ClienteDAO = new ClienteDAO();
+        clienteDAO = new ClienteDAO();
         initComponents();
         configurartabla();
         cargarClientes();
+        tablaClientes.getSelectionModel().addListSelectionListener(e -> seleccionarCliente());
         setSize(800, 600);
     }
 
@@ -108,22 +109,33 @@ public DefaultTableModel modeloTabla;
         lblCorreo.setText("Correo");
         panelEdicion.add(lblCorreo);
         panelEdicion.add(txtCorreo);
-
-        lblVacio1.setText("jLabel7");
         panelEdicion.add(lblVacio1);
-
-        lblVacio2.setText("jLabel6");
         panelEdicion.add(lblVacio2);
 
         panelBotones.setAlignmentY(5.0F);
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         panelBotones.add(btnActualizar);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         panelBotones.add(btnEliminar);
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         panelBotones.add(btnLimpiar);
 
         panelEdicion.add(panelBotones);
@@ -160,6 +172,18 @@ public DefaultTableModel modeloTabla;
         buscarclientes();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        actualizarCliente();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        eliminarCliente();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarFormulario();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -191,7 +215,7 @@ private void configurartabla(){
 }
 private void cargarClientes(){
     modeloTabla.setRowCount(0);
-    List<Cliente> clientes = ClienteDAO.listarClientes();
+    List<Cliente> clientes = clienteDAO.listarClientes();
     for (Cliente cliente : clientes){
         modeloTabla.addRow(new Object[]{
             cliente.getId(),
@@ -208,7 +232,7 @@ private void buscarclientes(){
     String criterio = cbCriterioBusqueda.getSelectedItem().toString().toLowerCase();
     String valor = txtBuscar.getText().trim();
     modeloTabla.setRowCount(0);
-    List<Cliente> clientes = ClienteDAO.buscarCliente(criterio, valor);
+    List<Cliente> clientes = clienteDAO.buscarCliente(criterio, valor);
     for (Cliente cliente : clientes){
         modeloTabla.addRow(new Object[]{
             cliente.getId(),
@@ -224,7 +248,66 @@ private void buscarclientes(){
     }
 }
 
+private void seleccionarCliente() {
+        int fila = tablaClientes.getSelectedRow();
+        if (fila >= 0) {
+            txtNombre.setText(modeloTabla.getValueAt(fila, 1).toString());
+            txtDocumento.setText(modeloTabla.getValueAt(fila, 2).toString());
+            txtTelefono.setText(modeloTabla.getValueAt(fila, 3).toString());
+            txtCorreo.setText(modeloTabla.getValueAt(fila, 4).toString());
+        }
+    }
 
+    private void actualizarCliente() {
+        String documento = txtDocumento.getText().trim();
+        if (documento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un cliente para actualizar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        String nombre = txtNombre.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String correo = txtCorreo.getText().trim();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        Cliente cliente = new Cliente(0, nombre, documento, telefono, correo, 1); // Rol fijo, ajustar si es dinámico
+        clienteDAO.actualizarCliente(cliente);
+        limpiarFormulario();
+        cargarClientes();
+    }
+
+    private void eliminarCliente() {
+        String documento = txtDocumento.getText().trim();
+        if (documento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un cliente para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar este cliente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                clienteDAO.eliminarCliente(documento);
+                limpiarFormulario();
+                cargarClientes();
+            } catch (Exception e) {
+                if (e.getMessage().contains("23503")) { // Violación de clave foránea
+                    JOptionPane.showMessageDialog(this, "No se puede eliminar el cliente porque tiene vehículos o servicios asociados", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al eliminar cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
+
+    private void limpiarFormulario() {
+        txtNombre.setText("");
+        txtDocumento.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtBuscar.setText("");
+        cargarClientes();
+    }
 }
