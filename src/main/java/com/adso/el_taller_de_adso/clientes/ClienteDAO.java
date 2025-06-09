@@ -5,6 +5,7 @@
 package com.adso.el_taller_de_adso.clientes;
 
 import com.adso.el_taller_de_adso.ConexionBD;
+import com.adso.el_taller_de_adso.clientes.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,15 +41,21 @@ public class ClienteDAO {
         String sql = "SELECT * FROM clientes";
         try (Connection conn = ConexionBD.conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeUpdate()){
+                ResultSet rs = stmt.executeQuery()){
                 while(rs.next()){
-                    clientes.add(new cliente(
-                    rs.getInt("id")
-                    rs.getString("nombre")
-                    )
+                    clientes.add(new Cliente(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("documento"),
+                    rs.getString("telefono"),
+                    rs.getString("correo"),
+                    rs.getInt("rol")
+                    ));
                 }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al listar clientes: "+ e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+        return clientes;
     }
 }
