@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import com.adso.el_taller_de_adso.clientes.ClienteDAO;
 import com.adso.el_taller_de_adso.clientes.Cliente;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,13 +73,18 @@ public DefaultTableModel modeloTabla;
         jLabel1.setText("Criterio");
         panelBusqueda.add(jLabel1);
 
-        cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Documento", "Nombre" }));
+        cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "documento", "nombre" }));
         panelBusqueda.add(cbCriterioBusqueda);
 
         txtBuscar.setMinimumSize(new java.awt.Dimension(200, 25));
         panelBusqueda.add(txtBuscar);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         panelBusqueda.add(btnBuscar);
 
         getContentPane().add(panelBusqueda, java.awt.BorderLayout.PAGE_START);
@@ -150,6 +156,10 @@ public DefaultTableModel modeloTabla;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscarclientes();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
@@ -193,4 +203,28 @@ private void cargarClientes(){
         });
     }
 }
+
+private void buscarclientes(){
+    String criterio = cbCriterioBusqueda.getSelectedItem().toString().toLowerCase();
+    String valor = txtBuscar.getText().trim();
+    modeloTabla.setRowCount(0);
+    List<Cliente> clientes = ClienteDAO.buscarCliente(criterio, valor);
+    for (Cliente cliente : clientes){
+        modeloTabla.addRow(new Object[]{
+            cliente.getId(),
+            cliente.getNombre(),
+            cliente.getDocumento(),
+            cliente.getTelefono(),
+            cliente.getCorreo(),
+            cliente.getRol()
+        });        
+    }
+    if (clientes.isEmpty()){
+        JOptionPane.showMessageDialog(this, "no se encontraron clientes", "Información", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
+
+
+
+
 }
