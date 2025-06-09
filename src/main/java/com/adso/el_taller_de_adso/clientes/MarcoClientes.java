@@ -45,6 +45,8 @@ private ClienteDAO clienteDAO;
         lblCorreo = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setText("Registro de Usuarios");
 
         lblNombre.setText("Nombre:");

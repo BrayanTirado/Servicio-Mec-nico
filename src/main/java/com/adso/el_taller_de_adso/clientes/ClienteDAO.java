@@ -83,4 +83,24 @@ public class ClienteDAO {
         }
         return clientes;
     }
+    
+    public void actualizarCliente(Cliente cliente){
+        String sql = "UPDATE clientes SET nombre = ?, telefono = ?, correo = ?, rol = ? WHERE documento = ?";
+        try (Connection conn = ConexionBD.conectar();
+              PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, cliente.getNombre());
+            stmt.setString(2, cliente.getTelefono());
+            stmt.setString(3, cliente.getCorreo());
+            stmt.setInt(4, cliente.getRol());
+            stmt.setString(5, cliente.getDocumento());
+            int rows = stmt.executeUpdate();
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(null, "cliente actualizado con exito");  
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar cliente" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
