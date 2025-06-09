@@ -103,4 +103,21 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Error al actualizar cliente" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    public void eliminarCliente(String documento){
+        String sql = "DELETE FROM clientes WHERE documento = ?";
+        try (Connection conn = ConexionBD.conectar();
+               PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, documento);
+            int rows = stmt.executeUpdate();
+            if(rows > 0 ){
+                JOptionPane.showMessageDialog(null, "Cliente eliminado con exito");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar cliente" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
