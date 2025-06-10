@@ -19,6 +19,30 @@ public class ServicioDAO {
         return ConexionBD.conectar(); // Use the ConexionBD class for connection
     }
 
+    public List<Servicio> getServiciosByVehiculo(int vehicleId) throws SQLException {
+    List<Servicio> servicios = new ArrayList<>();
+    Connection conn = getConnection();
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    try {
+        String sql = "SELECT id, fecha, tipo, costo FROM servicios WHERE vehiculo_id = ?";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, vehicleId);
+        rs = pstmt.executeQuery();
+        while (rs.next()) {
+            Servicio servicio = new Servicio();
+            servicio.setId(rs.getInt("id"));
+            servicio.setFecha(rs.getDate("fecha"));
+            servicio.setTipo(rs.getString("tipo"));
+            servicio.setCosto(rs.getDouble("costo"));
+            servicios.add(servicio);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        throw e; // Re-lanzar para manejo en el caller
+    } 
+    return servicios;
+}
     public List<String> getAllClientes() {
         List<String> clientes = new ArrayList<>();
         Connection conn = null;
