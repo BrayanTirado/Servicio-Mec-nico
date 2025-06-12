@@ -69,17 +69,22 @@ public DefaultTableModel modeloTabla;
         setTitle("GestionClientes");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
+        panelBusqueda.setBackground(new java.awt.Color(204, 204, 204));
         panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Cliente"));
 
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         jLabel1.setText("Criterio");
         panelBusqueda.add(jLabel1);
 
-        cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "documento", "nombre" }));
+        cbCriterioBusqueda.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Documento", "Nombre" }));
         panelBusqueda.add(cbCriterioBusqueda);
 
+        txtBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         txtBuscar.setMinimumSize(new java.awt.Dimension(200, 25));
         panelBusqueda.add(txtBuscar);
 
+        btnBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,22 +95,27 @@ public DefaultTableModel modeloTabla;
 
         getContentPane().add(panelBusqueda, java.awt.BorderLayout.PAGE_START);
 
+        panelEdicion.setBackground(new java.awt.Color(204, 204, 204));
         panelEdicion.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Cliente"));
         panelEdicion.setPreferredSize(new java.awt.Dimension(0, 200));
         panelEdicion.setLayout(new java.awt.GridLayout(6, 2, 5, 5));
 
+        lblNombre.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         lblNombre.setText("Nombre");
         panelEdicion.add(lblNombre);
         panelEdicion.add(txtNombre);
 
+        lblDocumento.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         lblDocumento.setText("Documento");
         panelEdicion.add(lblDocumento);
         panelEdicion.add(txtDocumento);
 
+        lblTelefono.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         lblTelefono.setText("Teléfono");
         panelEdicion.add(lblTelefono);
         panelEdicion.add(txtTelefono);
 
+        lblCorreo.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         lblCorreo.setText("Correo");
         panelEdicion.add(lblCorreo);
         panelEdicion.add(txtCorreo);
@@ -114,6 +124,7 @@ public DefaultTableModel modeloTabla;
 
         panelBotones.setAlignmentY(5.0F);
 
+        btnActualizar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +133,7 @@ public DefaultTableModel modeloTabla;
         });
         panelBotones.add(btnActualizar);
 
+        btnEliminar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +142,7 @@ public DefaultTableModel modeloTabla;
         });
         panelBotones.add(btnEliminar);
 
+        btnLimpiar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +154,8 @@ public DefaultTableModel modeloTabla;
         panelEdicion.add(panelBotones);
 
         getContentPane().add(panelEdicion, java.awt.BorderLayout.PAGE_END);
+
+        panelClientes.setBackground(new java.awt.Color(255, 204, 255));
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
