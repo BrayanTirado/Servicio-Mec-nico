@@ -72,6 +72,8 @@ public class SeleccionRepuestos extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         jLabel2.setText("Cantidad");
 
+        jTextField1.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+
         jButton1.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +111,7 @@ public class SeleccionRepuestos extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
