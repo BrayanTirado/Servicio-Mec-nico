@@ -5,14 +5,14 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private double precio;
-    private double stock;
+    private int stock;
 
     // Constructor vacío
     public Producto() {
     }
 
     // Constructor con parámetros
-    public Producto(int id, String nombre, String descripcion, double precio, double stock) {
+    public Producto(int id, String nombre, String descripcion, double precio, int stock) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -53,15 +53,11 @@ public class Producto {
         this.precio = precio;
     }
     
-        public double getStock() {
+        public int getStock() {
         return stock;
     }
    
-        public void setStock(double stock) {
+        public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    void setCantidad(int parseInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
