@@ -82,6 +82,7 @@ public DefaultTableModel modeloTabla;
 
         txtBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         txtBuscar.setMinimumSize(new java.awt.Dimension(200, 25));
+        txtBuscar.setPreferredSize(new java.awt.Dimension(150, 26));
         panelBusqueda.add(txtBuscar);
 
         btnBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
@@ -122,10 +123,14 @@ public DefaultTableModel modeloTabla;
         panelEdicion.add(lblVacio1);
         panelEdicion.add(lblVacio2);
 
+        panelBotones.setAlignmentX(5.0F);
         panelBotones.setAlignmentY(5.0F);
+        panelBotones.setMinimumSize(new java.awt.Dimension(255, 60));
+        panelBotones.setPreferredSize(new java.awt.Dimension(260, 150));
 
         btnActualizar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
         btnActualizar.setText("Actualizar");
+        btnActualizar.setMaximumSize(new java.awt.Dimension(100, 100));
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);

@@ -80,6 +80,9 @@
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 25]"/>
             </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[150, 26]"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscar">
@@ -168,7 +171,14 @@
         </Component>
         <Container class="javax.swing.JPanel" name="panelBotones">
           <Properties>
+            <Property name="alignmentX" type="float" value="5.0"/>
             <Property name="alignmentY" type="float" value="5.0"/>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[255, 60]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[260, 150]"/>
+            </Property>
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
@@ -179,6 +189,9 @@
                   <Font name="Sylfaen" size="14" style="2"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[100, 100]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
