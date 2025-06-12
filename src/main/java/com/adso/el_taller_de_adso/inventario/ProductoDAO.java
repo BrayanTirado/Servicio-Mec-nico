@@ -65,7 +65,7 @@ public class ProductoDAO {
                     rs.getString("nombre"),
                     rs.getString("descripcion"),
                     rs.getDouble("precio"),
-                    rs.getDouble("stock")
+                    rs.getInt("stock")
                 );
                 lista.add(p);
             }
