@@ -9,7 +9,7 @@ public class ProductoDAO {
     // Guardar producto
     public void guardarProducto(Producto producto) throws SQLException {
         Connection conn = ConexionBD.conectar();
-        String sql = "INSERT INTO productos (nombre, cantidad, precio) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO productos (nombre, descripcion, precio, stock) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, producto.getNombre());
             stmt.setString(2, producto.getDescripcion());
@@ -24,7 +24,7 @@ public class ProductoDAO {
     // Editar producto (todos los campos)
     public void editarProducto(Producto producto) {
         Connection conn = ConexionBD.conectar();
-        String sql = "UPDATE productos SET nombre = ?, cantidad = ?, precio = ? WHERE id = ?";
+        String sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ? WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, producto.getNombre());
             stmt.setString(2, producto.getDescripcion());
