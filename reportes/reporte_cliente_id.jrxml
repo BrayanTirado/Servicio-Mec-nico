@@ -2,17 +2,21 @@
 <!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_cliente_id" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b9cfcff-9dc3-4201-8464-02eb9ca5be09">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="reportes"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[c2VydmljaW9zICwxNSwxNSw5ZjhhMTJlZS1iYzdhLTRjYTMtOTUxMi1jNzRhY2QxZjczZTY7Y2xp
+ZW50ZXMgLDE2OSwyOCxlYjUyZjczOS04OTAyLTQ3NDItOTA1OS03ZmEwNTAyYWMxMjk7]]>
+	</property>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="723"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="263"/>
 	<parameter name="cliente_id" class="java.lang.Integer"/>
 	<queryString>
-		<![CDATA[SELECT servicios.*, clientes.*
+		<![CDATA[SELECT servicios.*,
+	clientes.*
 FROM servicios
-JOIN clientes ON servicios.cliente_id = clientes.id
-WHERE servicios.cliente_id = $P{cliente_id}
-
-]]>
+	JOIN clientes ON 
+	 servicios.cliente_id = clientes.id 
+WHERE 
+	 servicios.cliente_id = $P{cliente_id}]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -87,7 +91,7 @@ WHERE servicios.cliente_id = $P{cliente_id}
 			<staticText>
 				<reportElement x="0" y="11" width="560" height="30" forecolor="#3B5CED" uuid="f5d79ca3-c1ca-420a-9477-07afc6364714"/>
 				<textElement textAlignment="Center" markup="none">
-					<font fontName="Comic Sans MSSansSerif" size="21" isBold="true"/>
+					<font fontName="Arial" size="21" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Taller Mecánico de ADSO]]></text>
 			</staticText>
@@ -100,7 +104,7 @@ WHERE servicios.cliente_id = $P{cliente_id}
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Id Cliente:]]></text>
 			</staticText>
@@ -116,7 +120,7 @@ WHERE servicios.cliente_id = $P{cliente_id}
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font fontName="Comic Sans MS" size="14"/>
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cliente_id}]]></textFieldExpression>
 			</textField>
@@ -131,32 +135,32 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="291" y="130" width="81" height="30" forecolor="#3B5CED" uuid="c3d40f42-5ef1-404a-a896-1e88578faba0">
+				<reportElement x="291" y="130" width="89" height="30" forecolor="#3B5CED" uuid="c3d40f42-5ef1-404a-a896-1e88578faba0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7d2e7f-e51a-48b5-825b-0f7b6475eaa0"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="291" y="90" width="79" height="30" forecolor="#3B5CED" uuid="c50e5b12-5c21-45ad-8015-708c50caad52">
+				<reportElement x="291" y="90" width="89" height="30" forecolor="#3B5CED" uuid="c50e5b12-5c21-45ad-8015-708c50caad52">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38553897-eac9-4774-b702-d34dc3e2cae8"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo]]></text>
 			</staticText>
@@ -167,32 +171,32 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="370" y="90" width="173" height="30" uuid="df8c23ae-2e96-4de7-b878-39b0410f7db2">
+				<reportElement x="380" y="90" width="163" height="30" uuid="df8c23ae-2e96-4de7-b878-39b0410f7db2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38553897-eac9-4774-b702-d34dc3e2cae8"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="372" y="130" width="173" height="30" uuid="a13156c4-3c45-42c4-b4c4-16afbde4f703">
+				<reportElement x="380" y="130" width="165" height="30" uuid="a13156c4-3c45-42c4-b4c4-16afbde4f703">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7d2e7f-e51a-48b5-825b-0f7b6475eaa0"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
 			</textField>
@@ -203,8 +207,8 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
@@ -215,8 +219,8 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
@@ -227,8 +231,8 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
@@ -239,32 +243,32 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="290" y="10" width="81" height="30" forecolor="#3B5CED" uuid="b8f49605-f2c5-4204-a9b3-c14e7dd35c1f">
+				<reportElement x="290" y="10" width="90" height="30" forecolor="#3B5CED" uuid="b8f49605-f2c5-4204-a9b3-c14e7dd35c1f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Documento]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="371" y="10" width="173" height="30" uuid="dbbabed8-31fd-4057-9a0e-5f67c22a5a5d">
+				<reportElement x="380" y="10" width="164" height="30" uuid="dbbabed8-31fd-4057-9a0e-5f67c22a5a5d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
 			</textField>
@@ -275,8 +279,8 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correo]]></text>
 			</staticText>
@@ -287,32 +291,32 @@ WHERE servicios.cliente_id = $P{cliente_id}
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="290" y="51" width="81" height="30" forecolor="#3B5CED" uuid="76b5bf17-f6d6-496d-89cb-c0eeeae29375">
+				<reportElement x="290" y="51" width="90" height="30" forecolor="#3B5CED" uuid="76b5bf17-f6d6-496d-89cb-c0eeeae29375">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="15" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Teléfono]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="371" y="51" width="173" height="30" uuid="a99d2f31-028c-43e2-a2b9-d0bd90f03a15">
+				<reportElement x="380" y="51" width="164" height="30" uuid="a99d2f31-028c-43e2-a2b9-d0bd90f03a15">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Comic Sans MS" size="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
