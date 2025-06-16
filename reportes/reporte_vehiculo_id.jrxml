@@ -88,7 +88,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 			<staticText>
 				<reportElement x="-3" y="4" width="560" height="30" forecolor="#3B5CED" uuid="dd873d3d-de6f-4454-ad28-4a4f1079da9a"/>
 				<textElement textAlignment="Center" markup="none">
-					<font fontName="Arial" size="21" isBold="true"/>
+					<font fontName="SansSerif" size="21" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Taller Mecánico de ADSO]]></text>
 			</staticText>
@@ -101,7 +101,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Id Vehículo:]]></text>
 			</staticText>
@@ -117,7 +117,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehiculo_id}]]></textFieldExpression>
 			</textField>
@@ -133,7 +133,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
@@ -145,7 +145,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldado]]></text>
 			</staticText>
@@ -157,7 +157,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo]]></text>
 			</staticText>
@@ -169,7 +169,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
@@ -181,7 +181,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
 			</textField>
@@ -193,7 +193,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
 			</textField>
@@ -205,7 +205,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
@@ -217,7 +217,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
@@ -229,7 +229,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Modelo]]></text>
 			</staticText>
@@ -241,7 +241,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Año]]></text>
 			</staticText>
@@ -253,7 +253,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Marca]]></text>
 			</staticText>
@@ -265,7 +265,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
 			</textField>
@@ -277,7 +277,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
 			</textField>
@@ -289,7 +289,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
@@ -301,7 +301,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Placa]]></text>
 			</staticText>
@@ -313,7 +313,7 @@ WHERE servicios.vehiculo_id = $P{vehiculo_id}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
 			</textField>

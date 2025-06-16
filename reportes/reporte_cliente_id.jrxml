@@ -91,7 +91,7 @@ WHERE
 			<staticText>
 				<reportElement x="0" y="11" width="560" height="30" forecolor="#3B5CED" uuid="f5d79ca3-c1ca-420a-9477-07afc6364714"/>
 				<textElement textAlignment="Center" markup="none">
-					<font fontName="Arial" size="21" isBold="true"/>
+					<font fontName="SansSerif" size="21" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Taller Mecánico de ADSO]]></text>
 			</staticText>
@@ -104,7 +104,7 @@ WHERE
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
 				</reportElement>
 				<textElement>
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Id Cliente:]]></text>
 			</staticText>
@@ -120,7 +120,7 @@ WHERE
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cliente_id}]]></textFieldExpression>
 			</textField>
@@ -136,7 +136,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
@@ -148,7 +148,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldado]]></text>
 			</staticText>
@@ -160,7 +160,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo]]></text>
 			</staticText>
@@ -172,7 +172,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
@@ -184,7 +184,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
 			</textField>
@@ -196,7 +196,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
 			</textField>
@@ -208,7 +208,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
@@ -220,7 +220,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
@@ -232,7 +232,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
@@ -244,7 +244,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
@@ -256,7 +256,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Documento]]></text>
 			</staticText>
@@ -268,7 +268,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
 			</textField>
@@ -280,7 +280,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correo]]></text>
 			</staticText>
@@ -292,7 +292,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
 			</textField>
@@ -304,7 +304,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Teléfono]]></text>
 			</staticText>
@@ -316,7 +316,7 @@ WHERE
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>

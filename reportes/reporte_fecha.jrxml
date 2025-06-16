@@ -51,7 +51,7 @@ Where fecha= $P{fecha}]]>
 			<staticText>
 				<reportElement x="0" y="11" width="560" height="30" forecolor="#3B5CED" uuid="32550af8-3279-4522-8001-c60f3e1d333f"/>
 				<textElement textAlignment="Center" markup="none">
-					<font fontName="Arial" size="21" isBold="true"/>
+					<font fontName="SansSerif" size="21" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Taller Mecánico de ADSO]]></text>
 			</staticText>
@@ -64,7 +64,7 @@ Where fecha= $P{fecha}]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e2e859e8-7dfa-47b0-9f9a-00dca0ec5d68"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
@@ -80,7 +80,7 @@ Where fecha= $P{fecha}]]>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Left">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
@@ -96,7 +96,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
@@ -108,7 +108,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saldado]]></text>
 			</staticText>
@@ -120,7 +120,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="15" isBold="true"/>
+					<font fontName="SansSerif" size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo]]></text>
 			</staticText>
@@ -132,7 +132,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
@@ -144,7 +144,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
 			</textField>
@@ -156,7 +156,7 @@ Where fecha= $P{fecha}]]>
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="14"/>
+					<font fontName="SansSerif" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
 			</textField>
