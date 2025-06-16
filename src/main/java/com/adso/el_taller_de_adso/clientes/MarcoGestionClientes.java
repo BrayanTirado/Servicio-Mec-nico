@@ -101,22 +101,23 @@ public DefaultTableModel modeloTabla;
         panelEdicion.setPreferredSize(new java.awt.Dimension(0, 200));
         panelEdicion.setLayout(new java.awt.GridLayout(6, 2, 5, 5));
 
-        lblNombre.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         lblNombre.setText("Nombre");
+        lblNombre.setAlignmentY(10.0F);
         panelEdicion.add(lblNombre);
         panelEdicion.add(txtNombre);
 
-        lblDocumento.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        lblDocumento.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         lblDocumento.setText("Documento");
         panelEdicion.add(lblDocumento);
         panelEdicion.add(txtDocumento);
 
-        lblTelefono.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        lblTelefono.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         lblTelefono.setText("Teléfono");
         panelEdicion.add(lblTelefono);
         panelEdicion.add(txtTelefono);
 
-        lblCorreo.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        lblCorreo.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         lblCorreo.setText("Correo");
         panelEdicion.add(lblCorreo);
         panelEdicion.add(txtCorreo);
