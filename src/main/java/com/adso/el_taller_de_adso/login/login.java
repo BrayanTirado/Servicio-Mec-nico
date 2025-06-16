@@ -5,7 +5,14 @@
 package com.adso.el_taller_de_adso.login;
 
 import com.adso.el_taller_de_adso.AplicacionPrincipal;
+import com.adso.el_taller_de_adso.ConexionBD;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -139,23 +146,62 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String usuario = txtusuario.getText();
-      String password = jpassword.getText();
-      
-      if (usuario.isEmpty() || password.isEmpty()){
-          JOptionPane.showMessageDialog(null, "Datos incompletos");
-          
-      }else{
-          if (usuario.equals("Admin") && password.equals("12345")) {
-              JOptionPane.showMessageDialog(null, "Bienevenido Señor Administrador");
-              AplicacionPrincipal pc = new AplicacionPrincipal();
-              pc .setVisible(true);
-              this.dispose();
-         
-          }else {
-              JOptionPane.showMessageDialog(null, "Usuario y Contraseña incorrecta");
-          }
-      }
+
+    String correo = txtusuario.getText();
+    String password = jpassword.getText();  // Puedes cambiarlo si tienes campo específico para contraseña
+
+    if (correo.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Datos incompletos");
+        return;
+    }
+
+    try {
+        Connection con = ConexionBD.conectar();
+        String sql = "SELECT c.nombre, r.nombre AS rol " +
+                     "FROM clientes c " +
+                     "JOIN roles r ON c.rol = r.id " +
+                     "WHERE c.correo = ? AND c.documento = ?"; // Aquí usamos "documento" como "contraseña"
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, correo);
+        ps.setString(2, password);  // Aquí deberías tener un campo de contraseña real en la base
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String nombre = rs.getString("nombre");
+            String rol = rs.getString("rol");
+
+            switch (rol.toLowerCase()) {
+                case "admin":
+                    JOptionPane.showMessageDialog(null, "Bienvenido Admin " + nombre);
+                    new AplicacionPrincipal().setVisible(true);
+                    break;
+                case "mecanico":
+                    JOptionPane.showMessageDialog(null, "Bienvenido Mecánico " + nombre);
+                    // new VentanaMecanico().setVisible(true);
+                    break;
+                case "cliente":
+                    JOptionPane.showMessageDialog(null, "Bienvenido Cliente " + nombre);
+                    // new VentanaCliente().setVisible(true);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Rol no reconocido.");
+            }
+
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+        }
+
+        rs.close();
+        ps.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error en el login: " + e.getMessage());
+    }
+
+
       
     }//GEN-LAST:event_jButton1ActionPerformed
 
