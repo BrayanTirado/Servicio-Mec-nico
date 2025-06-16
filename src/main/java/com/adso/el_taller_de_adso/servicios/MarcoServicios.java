@@ -68,24 +68,29 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jDateChooserfechadelservicio = new com.toedter.calendar.JDateChooser();
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 2, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setText("Agregar Servicio");
 
-        jLabel2.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setText("Fecha del servicio");
 
-        jLabel3.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel3.setText("Selecciona el cliente");
 
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel4.setText("Tipo de servicio");
 
-        jLabel5.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel5.setText("Selecciona el vehiculo");
 
-        jButtonagregarrepuestos.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jButtonagregarrepuestos.setBackground(new java.awt.Color(153, 204, 255));
+        jButtonagregarrepuestos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jButtonagregarrepuestos.setText("Agregar repuestos");
         jButtonagregarrepuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +127,7 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Sylfaen", 2, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel6.setText("Productos Seleccionados");
 
         jLabel8.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
@@ -151,7 +156,7 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(244, 244, 244)
+                        .addGap(250, 250, 250)
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
