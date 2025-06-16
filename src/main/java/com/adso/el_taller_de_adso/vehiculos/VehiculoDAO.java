@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.adso.el_taller_de_adso.vehiculos;
 
 import com.adso.el_taller_de_adso.ConexionBD;
@@ -108,25 +105,25 @@ public class VehiculoDAO {
         return historial;
     }
 
-    public Vehiculo buscarVehiculoPorId(int id) {
-        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vehiculos WHERE id = ?")) {
-            stmt.setInt(1, id);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return new Vehiculo(
-                        rs.getInt("id"),
-                        rs.getString("placa"),
-                        rs.getString("marca"),
-                        rs.getString("modelo"),
-                        rs.getInt("anio"),
-                        rs.getString("tipo"),
-                        rs.getInt("cliente_id")
-                    );
-                }
+  public Vehiculo buscarVehiculoPorPlaca(String placa) {
+    try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vehiculos WHERE placa = ?")) {
+        stmt.setString(1, placa);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return new Vehiculo(
+                    rs.getInt("id"),
+                    rs.getString("placa"),
+                    rs.getString("marca"),
+                    rs.getString("modelo"),
+                    rs.getInt("anio"),
+                    rs.getString("tipo"),
+                    rs.getInt("cliente_id")
+                );
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error al buscar vehículo por ID: " + e.getMessage());
         }
-        return null; // Retorna null si no se encuentra
+    } catch (SQLException e) {
+        throw new RuntimeException("Error al buscar vehículo por placa: " + e.getMessage());
     }
+    return null; 
+}
 }
