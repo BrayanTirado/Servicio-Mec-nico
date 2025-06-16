@@ -25,6 +25,7 @@ public class reporte_fecha extends javax.swing.JInternalFrame{
         jDateChooserfechadelservicio = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
