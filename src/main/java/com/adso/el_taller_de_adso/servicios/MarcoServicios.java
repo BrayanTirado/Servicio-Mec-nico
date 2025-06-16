@@ -72,26 +72,32 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+<<<<<<< HEAD
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+=======
+>>>>>>> 50fcf62f0eb4551eefeb41595bf52c6a1bf72b86
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 2, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel1.setText("Agregar Servicio");
 
-        jLabel2.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setText("Fecha del servicio");
 
-        jLabel3.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel3.setText("Selecciona el cliente");
 
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel4.setText("Tipo de servicio");
 
-        jLabel5.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel5.setText("Selecciona el vehiculo");
 
-        jButtonagregarrepuestos.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jButtonagregarrepuestos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jButtonagregarrepuestos.setForeground(new java.awt.Color(0, 102, 255));
         jButtonagregarrepuestos.setText("Agregar repuestos");
         jButtonagregarrepuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +118,8 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableproductosseleccionados);
 
-        jButtonguardarservicio.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jButtonguardarservicio.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jButtonguardarservicio.setForeground(new java.awt.Color(0, 102, 255));
         jButtonguardarservicio.setText("Guardar Servicio");
         jButtonguardarservicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,17 +128,16 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         });
 
         jTextFieldtotalservicio.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
-        jTextFieldtotalservicio.setText("0");
         jTextFieldtotalservicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldtotalservicioActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Sylfaen", 2, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel6.setText("Productos Seleccionados");
 
-        jLabel8.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel8.setText("Total del Servicio");
 
         jDateChooserfechadelservicio.setPreferredSize(new java.awt.Dimension(150, 22));
@@ -144,7 +150,7 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jTextFieldtotalservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldtotalservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonguardarservicio)
                 .addGap(67, 67, 67))
@@ -157,7 +163,7 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(244, 244, 244)
+                        .addGap(250, 250, 250)
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()

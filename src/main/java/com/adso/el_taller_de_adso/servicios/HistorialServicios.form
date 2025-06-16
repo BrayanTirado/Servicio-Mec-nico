@@ -27,7 +27,10 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="66" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -68,7 +71,11 @@
                       <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" max="32767" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace type="separate" max="32767" attributes="0"/>
+=======
+                  <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
+>>>>>>> 50fcf62f0eb4551eefeb41595bf52c6a1bf72b86
                   <Component id="jScrollPane1" min="-2" pref="315" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
@@ -79,7 +86,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sylfaen" size="18" style="2"/>
+              <Font name="Comic Sans MS" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Seleccionar"/>
           </Properties>
@@ -104,8 +111,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="99" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Sylfaen" size="14" style="2"/>
+              <Font name="Comic Sans MS" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
