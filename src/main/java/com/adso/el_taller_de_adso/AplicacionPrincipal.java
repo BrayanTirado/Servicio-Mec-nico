@@ -62,7 +62,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
 
-        desktopPane.setBackground(new java.awt.Color(102, 102, 102));
+        desktopPane.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
