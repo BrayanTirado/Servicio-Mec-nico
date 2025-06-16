@@ -6,19 +6,10 @@ public class Producto {
     private String descripcion;
     private double precio;
     private int stock;
+    private int umbralBajoStock = 10; // Valor predeterminado para el umbral
 
     // Constructor vacío
-    public Producto() {
-    }
-
-    // Constructor con parámetros
-    public Producto(int id, String nombre, String descripcion, double precio, int stock) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stock = stock;
-    }
+    public Producto() {}
 
     // Getters y Setters
     public int getId() {
@@ -52,12 +43,20 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
-        public int getStock() {
+
+    public int getStock() {
         return stock;
     }
-   
-        public void setStock(int stock) {
+
+    public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getUmbralBajoStock() {
+        return umbralBajoStock;
+    }
+
+    public void setUmbralBajoStock(int umbralBajoStock) {
+        this.umbralBajoStock = umbralBajoStock;
     }
 }
