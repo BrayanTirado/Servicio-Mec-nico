@@ -11,6 +11,10 @@ import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 import com.adso.el_taller_de_adso.servicios.HistorialServicios;
 import com.adso.el_taller_de_adso.clientes.MarcoClientes;
 import com.adso.el_taller_de_adso.clientes.MarcoGestionClientes;
+import com.adso.el_taller_de_adso.reportes.reporte_cliente;
+import com.adso.el_taller_de_adso.reportes.ingresos_generados;
+import com.adso.el_taller_de_adso.reportes.reporte_fecha;
+import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -32,6 +36,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu4 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -43,6 +48,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         menuItemRegistrarClientes = new javax.swing.JMenuItem();
         menuItemGestionarClientes = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        menuItemReporte_Cliente = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+
+        jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -60,7 +72,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
             .addGap(0, 717, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("vehiculos");
+        jMenu1.setText("Vehículos");
 
         menuItemVehiculos.setText("Gestión de Vehículos");
         menuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +132,42 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu5.setText("Reportes");
+
+        menuItemReporte_Cliente.setText("Servicios por cliente");
+        menuItemReporte_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemReporte_ClienteActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuItemReporte_Cliente);
+
+        jMenuItem2.setText("Servicios por vehículo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Servicios por fecha");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setText("Ingresos generados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,6 +223,35 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         marcoGestionClientes.setVisible(true);
     }//GEN-LAST:event_menuItemGestionarClientesActionPerformed
 
+    private void menuItemReporte_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReporte_ClienteActionPerformed
+        // TODO add your handling code here:
+        reporte_cliente reportecliente = new reporte_cliente();
+        desktopPane.add(reportecliente);
+        reportecliente.setVisible(true);
+       
+    }//GEN-LAST:event_menuItemReporte_ClienteActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        reporte_vehiculo reportevehiculo = new reporte_vehiculo();
+        desktopPane.add(reportevehiculo);
+        reportevehiculo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        reporte_fecha reportefecha = new reporte_fecha();
+        desktopPane.add(reportefecha);
+        reportefecha.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ingresos_generados reporteingresos = new ingresos_generados();
+        desktopPane.add(reporteingresos);
+        reporteingresos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -190,11 +267,17 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemGestionarClientes;
     private javax.swing.JMenuItem menuItemRegistrarClientes;
+    private javax.swing.JMenuItem menuItemReporte_Cliente;
     private javax.swing.JMenuItem menuItemVehiculos;
     private javax.swing.JMenuItem menuitemHistorialServicios;
     // End of variables declaration//GEN-END:variables
