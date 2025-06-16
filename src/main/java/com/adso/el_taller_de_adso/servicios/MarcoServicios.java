@@ -89,8 +89,8 @@ public class MarcoServicios extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel5.setText("Selecciona el vehiculo");
 
-        jButtonagregarrepuestos.setBackground(new java.awt.Color(153, 204, 255));
         jButtonagregarrepuestos.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jButtonagregarrepuestos.setForeground(new java.awt.Color(0, 102, 255));
         jButtonagregarrepuestos.setText("Agregar repuestos");
         jButtonagregarrepuestos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
