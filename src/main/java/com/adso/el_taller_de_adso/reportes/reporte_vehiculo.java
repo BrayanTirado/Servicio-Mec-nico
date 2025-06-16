@@ -40,6 +40,7 @@ public class reporte_vehiculo extends javax.swing.JInternalFrame{
             }
         });
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));

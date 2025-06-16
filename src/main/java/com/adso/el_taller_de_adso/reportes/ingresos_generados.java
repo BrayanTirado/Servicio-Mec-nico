@@ -27,6 +27,7 @@ public class ingresos_generados extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel8.setText("Desde:");
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
