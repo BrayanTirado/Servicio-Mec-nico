@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
-        <exec.mainClass>com.mycompany.el_taller_de_adso.Elﬁ_Taller_De_ADSO</exec.mainClass>
+        <exec.mainClass>com.adso.el_taller_de_adso.login.login</exec.mainClass>
     </properties>
 
     <dependencies>
