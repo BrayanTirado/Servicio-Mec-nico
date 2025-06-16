@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c701f772-c134-4620-a65b-e01012f04e0f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="reportes"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="fecha" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[Select * from servicios 
+Where fecha= $P{fecha}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="costo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="costo"/>
+		<property name="com.jaspersoft.studio.field.label" value="costo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="pagado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="pagado"/>
+		<property name="com.jaspersoft.studio.field.label" value="pagado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="vehiculo_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="vehiculo_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="vehiculo_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="cliente_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cliente_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="cliente_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="560" height="30" forecolor="#3B5CED" uuid="32550af8-3279-4522-8001-c60f3e1d333f"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taller Mecánico de ADSO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="2" width="63" height="30" forecolor="#3B5CED" uuid="a36d37f9-d78c-46f0-a5ac-a588e62efbf5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e2e859e8-7dfa-47b0-9f9a-00dca0ec5d68"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="2" width="282" height="30" uuid="8b8eca3b-309a-421c-9c9a-2d00f6543f0f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#E9478B"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="10" width="81" height="30" forecolor="#3B5CED" uuid="256bbc58-983b-47e0-b082-e6a2ebeec6f1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="90" width="80" height="30" forecolor="#3B5CED" uuid="14299192-5c5f-43d0-b644-75163090385d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7d2e7f-e51a-48b5-825b-0f7b6475eaa0"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="80" height="30" forecolor="#3B5CED" uuid="0581319b-8513-4dd4-aa4e-d9eeebe5bb2a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38553897-eac9-4774-b702-d34dc3e2cae8"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="10" width="390" height="30" forecolor="#030303" uuid="7ef8158e-a92c-4315-8b88-c94a0f4029ba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="11627a3d-ef9e-42ef-9882-bbdd022ba3e1"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="50" width="390" height="30" forecolor="#030303" uuid="10c750b0-fb3a-4f2d-ae8f-ff9e8aef4ec4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38553897-eac9-4774-b702-d34dc3e2cae8"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="90" width="390" height="30" forecolor="#030303" uuid="f82aa501-91a6-4097-a865-c114d11d2f02">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af7d2e7f-e51a-48b5-825b-0f7b6475eaa0"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pagado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>
