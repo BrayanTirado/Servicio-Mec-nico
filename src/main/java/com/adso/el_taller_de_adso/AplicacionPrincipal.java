@@ -15,6 +15,7 @@ import com.adso.el_taller_de_adso.reportes.reporte_cliente;
 import com.adso.el_taller_de_adso.reportes.ingresos_generados;
 import com.adso.el_taller_de_adso.reportes.reporte_fecha;
 import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
+import com.adso.el_taller_de_adso.inventario.FormularioProducto;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -53,6 +54,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -168,6 +171,18 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setText("Inventarios");
+
+        jMenuItem1.setText("Agregar producto");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,6 +267,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         reporteingresos.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FormularioProducto formularioproducto = new FormularioProducto();
+        desktopPane.add(formularioproducto);
+        formularioproducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -269,7 +291,9 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
