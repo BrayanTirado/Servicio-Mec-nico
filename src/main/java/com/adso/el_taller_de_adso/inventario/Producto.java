@@ -1,6 +1,9 @@
 package com.adso.el_taller_de_adso.inventario;
 
 public class Producto {
+    public String toString() {
+    return this.nombre; // Mostrará el nombre del producto en el JComboBox
+}
     private int id;
     private String nombre;
     private String descripcion;
