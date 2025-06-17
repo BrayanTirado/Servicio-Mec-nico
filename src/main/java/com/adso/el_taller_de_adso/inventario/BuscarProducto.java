@@ -14,8 +14,6 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
     private DefaultTableModel modeloTabla;
     private List<Producto> listaProductos;
     private NumberFormat formatoPeso = NumberFormat.getCurrencyInstance();
-
-    // Declaración de variables de la interfaz
     private javax.swing.JTextField txtBuscarId;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel lblBuscar;
@@ -25,12 +23,10 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         initComponents();
     modeloTabla = new DefaultTableModel(new String[]{"ID", "Nombre", "Descripción", "Precio", "Stock"}, 0);
     tablaProductos.setModel(modeloTabla);
-    cargarProductos(); // Cargar productos al iniciar
-
-    // Configuración de la selección
-    tablaProductos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Solo una fila seleccionada
-    tablaProductos.setSelectionBackground(new java.awt.Color(200, 255, 200)); // Verde clarito
-    tablaProductos.setSelectionForeground(new java.awt.Color(0, 0, 0)); // Texto negro
+    cargarProductos(); 
+    tablaProductos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+    tablaProductos.setSelectionBackground(new java.awt.Color(200, 255, 200)); 
+    tablaProductos.setSelectionForeground(new java.awt.Color(0, 0, 0)); 
 
 }
     
@@ -150,12 +146,9 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         Producto productoEncontrado = dao.buscarPorId(id);
 
         if (productoEncontrado != null) {
-            // Reorganizar la lista: remover el producto y colocarlo al principio
             listaProductos.remove(productoEncontrado);
             listaProductos.add(0, productoEncontrado);
-            // Actualizar la tabla con la nueva lista
             actualizarTabla();
-            // Resaltar la fila del producto encontrado
             resaltarProductoEnTabla(id);
             JOptionPane.showMessageDialog(this, "Producto encontrado: " + productoEncontrado.getNombre());
         } else {
