@@ -30,15 +30,15 @@ public class ConsultaVehiculo extends javax.swing.JInternalFrame {
     }
     private void buscarVehiculoPorPlaca() {
         DefaultTableModel model = (DefaultTableModel) tablaVehiculos.getModel();
-        model.setRowCount(0); // Limpiar la tabla
-        String placa = txtBuscarId.getText().trim().toUpperCase(); // Obtener la placa y normalizarla
+        model.setRowCount(0); 
+        String placa = txtBuscarId.getText().trim().toUpperCase();
         List<Vehiculo> vehiculos = vehiculoDAO.listarVehiculos();
         for (Vehiculo v : vehiculos) {
             if (placa.isEmpty() || v.getPlaca().toUpperCase().contains(placa)) {
                 model.addRow(new Object[]{v.getId(), v.getPlaca(), v.getMarca(), v.getModelo(), v.getAnio(), v.getTipo()});
             }
         }
-        txtHistorial.setText(""); // Limpiar historial al buscar
+        txtHistorial.setText("");
     }
     
     private void mostrarHistorial() {
