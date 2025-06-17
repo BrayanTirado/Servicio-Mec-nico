@@ -45,7 +45,7 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
 
