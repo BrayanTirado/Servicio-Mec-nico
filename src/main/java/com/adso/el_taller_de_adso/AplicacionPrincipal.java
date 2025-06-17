@@ -18,6 +18,7 @@ import com.adso.el_taller_de_adso.reportes.reporte_fecha;
 import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
 import com.adso.el_taller_de_adso.inventario.FormularioProducto;
 import com.adso.el_taller_de_adso.inventario.StockBajo;
+import com.adso.el_taller_de_adso.inventario.BuscarProducto;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -61,6 +62,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -202,6 +204,19 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem6);
 
+        jMenuItem7.setText("Buscar Producto");
+        jMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem7MouseClicked(evt);
+            }
+        });
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem7);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -309,6 +324,20 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         facturacionproductos.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         BuscarProducto buscarProducto = new BuscarProducto();
+        desktopPane.add(buscarProducto);
+        buscarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MouseClicked
+        // TODO add your handling code here:
+        BuscarProducto buscarProducto = new BuscarProducto();
+        desktopPane.add(buscarProducto);
+        buscarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7MouseClicked
+
                                                  
                    
     public static void main(String args[]) {
@@ -335,6 +364,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemGestionarClientes;
