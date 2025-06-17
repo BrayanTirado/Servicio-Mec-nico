@@ -53,12 +53,12 @@ public DefaultTableModel modeloTabla;
         txtTelefono = new javax.swing.JTextField();
         lblCorreo = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
-        lblVacio1 = new javax.swing.JLabel();
-        lblVacio2 = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        lblVacio1 = new javax.swing.JLabel();
+        lblVacio2 = new javax.swing.JLabel();
         panelClientes = new javax.swing.JScrollPane();
         tablaClientes = new javax.swing.JTable();
 
@@ -69,24 +69,31 @@ public DefaultTableModel modeloTabla;
         setTitle("GestionClientes");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        panelBusqueda.setBackground(new java.awt.Color(204, 204, 204));
-        panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Cliente"));
+        panelBusqueda.setBackground(new java.awt.Color(204, 204, 255));
+        panelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Comic Sans MS", 1, 18))); // NOI18N
+        panelBusqueda.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel1.setText("Criterio");
         panelBusqueda.add(jLabel1);
 
-        cbCriterioBusqueda.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        cbCriterioBusqueda.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         cbCriterioBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Documento", "Nombre" }));
+        cbCriterioBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         panelBusqueda.add(cbCriterioBusqueda);
 
-        txtBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
+        txtBuscar.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         txtBuscar.setMinimumSize(new java.awt.Dimension(200, 25));
         txtBuscar.setPreferredSize(new java.awt.Dimension(150, 26));
         panelBusqueda.add(txtBuscar);
 
-        btnBuscar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
-        btnBuscar.setText("Buscar");
+        btnBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 102, 255));
+        btnBuscar.setText("   Buscar   ");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        btnBuscar.setOpaque(true);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -96,42 +103,52 @@ public DefaultTableModel modeloTabla;
 
         getContentPane().add(panelBusqueda, java.awt.BorderLayout.PAGE_START);
 
-        panelEdicion.setBackground(new java.awt.Color(204, 204, 204));
-        panelEdicion.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Cliente"));
+        panelEdicion.setBackground(new java.awt.Color(204, 204, 255));
+        panelEdicion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 1, 18))); // NOI18N
         panelEdicion.setPreferredSize(new java.awt.Dimension(0, 200));
         panelEdicion.setLayout(new java.awt.GridLayout(6, 2, 5, 5));
 
-        lblNombre.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         lblNombre.setText("Nombre");
         lblNombre.setAlignmentY(10.0F);
         panelEdicion.add(lblNombre);
+
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         panelEdicion.add(txtNombre);
 
-        lblDocumento.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        lblDocumento.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         lblDocumento.setText("Documento");
         panelEdicion.add(lblDocumento);
+
+        txtDocumento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         panelEdicion.add(txtDocumento);
 
-        lblTelefono.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        lblTelefono.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         lblTelefono.setText("Teléfono");
         panelEdicion.add(lblTelefono);
+
+        txtTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         panelEdicion.add(txtTelefono);
 
-        lblCorreo.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
+        lblCorreo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         lblCorreo.setText("Correo");
         panelEdicion.add(lblCorreo);
-        panelEdicion.add(txtCorreo);
-        panelEdicion.add(lblVacio1);
-        panelEdicion.add(lblVacio2);
 
+        txtCorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        panelEdicion.add(txtCorreo);
+
+        panelBotones.setBackground(new java.awt.Color(204, 204, 255));
         panelBotones.setAlignmentX(5.0F);
         panelBotones.setAlignmentY(5.0F);
-        panelBotones.setMinimumSize(new java.awt.Dimension(255, 60));
-        panelBotones.setPreferredSize(new java.awt.Dimension(260, 150));
+        panelBotones.setMinimumSize(new java.awt.Dimension(255, 80));
+        panelBotones.setPreferredSize(new java.awt.Dimension(260, 180));
 
-        btnActualizar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(0, 102, 255));
+        btnActualizar.setText("  Actualizar  ");
+        btnActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
         btnActualizar.setMaximumSize(new java.awt.Dimension(100, 100));
+        btnActualizar.setOpaque(true);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -139,8 +156,11 @@ public DefaultTableModel modeloTabla;
         });
         panelBotones.add(btnActualizar);
 
-        btnEliminar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 102, 255));
+        btnEliminar.setText("  Eliminar  ");
+        btnEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        btnEliminar.setOpaque(true);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -148,8 +168,11 @@ public DefaultTableModel modeloTabla;
         });
         panelBotones.add(btnEliminar);
 
-        btnLimpiar.setFont(new java.awt.Font("Sylfaen", 2, 14)); // NOI18N
-        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 102, 255));
+        btnLimpiar.setText("  Limpiar  ");
+        btnLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        btnLimpiar.setOpaque(true);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
@@ -158,10 +181,13 @@ public DefaultTableModel modeloTabla;
         panelBotones.add(btnLimpiar);
 
         panelEdicion.add(panelBotones);
+        panelEdicion.add(lblVacio1);
+        panelEdicion.add(lblVacio2);
 
         getContentPane().add(panelEdicion, java.awt.BorderLayout.PAGE_END);
 
-        panelClientes.setBackground(new java.awt.Color(255, 204, 255));
+        panelClientes.setBackground(new java.awt.Color(255, 255, 255));
+        panelClientes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
