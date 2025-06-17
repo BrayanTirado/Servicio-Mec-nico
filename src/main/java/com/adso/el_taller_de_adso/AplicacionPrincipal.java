@@ -19,6 +19,7 @@ import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
 import com.adso.el_taller_de_adso.inventario.FormularioProducto;
 import com.adso.el_taller_de_adso.inventario.StockBajo;
 import com.adso.el_taller_de_adso.inventario.BuscarProducto;
+import com.adso.el_taller_de_adso.inventario.EditarProducto;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -63,6 +64,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -217,6 +219,14 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem7);
 
+        jMenuItem8.setText("Editar Producto");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -338,6 +348,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         buscarProducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem7MouseClicked
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        EditarProducto editarproducto = new EditarProducto();
+        desktopPane.add(editarproducto);
+        editarproducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -365,6 +382,7 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemGestionarClientes;
