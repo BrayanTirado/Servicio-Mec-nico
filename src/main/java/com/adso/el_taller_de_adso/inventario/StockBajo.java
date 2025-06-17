@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ */
 package com.adso.el_taller_de_adso.inventario;
 
 
@@ -6,80 +9,91 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
-import com.adso.el_taller_de_adso.inventario.*;
+
 public class StockBajo extends javax.swing.JInternalFrame {
-    
+ private ProductoDAO productoDAO;
+    private DefaultTableModel modeloTabla;
 
-    private JTable tabla;
-    private ProductoDAO productoDAO;
-
-
-
-
-
+    /**
+     * Creates new form StockBajo1
+     */
     public StockBajo() {
-        super("Productos con Stock Bajo", true, true, true, true);
-        setSize(600, 300);
-        setLayout(new BorderLayout());
+        initComponents();
+        // Establecer Nimbus Look and Feel
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         productoDAO = new ProductoDAO();
-        tabla = new JTable();
-
-        JScrollPane scroll = new JScrollPane(tabla);
-        add(scroll, BorderLayout.CENTER);
+        modeloTabla = new DefaultTableModel(new String[]{"ID", "Nombre", "Stock"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer la tabla no editable
+            }
+        };
+        jTable1.setModel(modeloTabla);
 
         cargarProductosBajoStock();
     }
-
-    private void cargarProductosBajoStock() {
+    
+     private void cargarProductosBajoStock() {
         try {
             List<Producto> productos = productoDAO.obtenerTodos();
-            
-            DefaultTableModel modelo = new DefaultTableModel(new String[]{"ID", "Nombre", "Stock"}, 0) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // Hacer la tabla no editable
-                }
-            };
-
+            modeloTabla.setRowCount(0); // Limpiar la tabla
             for (Producto p : productos) {
                 if (p.getStock() <= p.getUmbralBajoStock()) {
-                    modelo.addRow(new Object[]{p.getId(), p.getNombre(), p.getStock()});
+                    modeloTabla.addRow(new Object[]{p.getId(), p.getNombre(), p.getStock()});
                 }
             }
-
-            tabla.setModel(modelo);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al cargar productos: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error al cargar productos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    // Si quieres agregar componentes adicionales, puedes hacerlo aquí
-    @Override
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if (visible) {
-            cargarProductosBajoStock(); // Refrescar al abrir
-        }
-    }
-
-
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jScrollPane2.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,16 +108,24 @@ public class StockBajo extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (visible) {
+            cargarProductosBajoStock(); // Refrescar al abrir
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
 }
