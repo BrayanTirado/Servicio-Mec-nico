@@ -48,7 +48,7 @@
                   <Component id="txtBuscar" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnbuscar" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace pref="167" max="32767" attributes="0"/>
+                  <EmptySpace pref="152" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -147,7 +147,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Rockwell" size="12" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar por ID"/>
+            <Property name="text" type="java.lang.String" value="Buscar Producto"/>
           </Properties>
         </Component>
       </SubComponents>
