@@ -65,6 +65,10 @@ public class StockBajo extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jScrollPane2.setBackground(new java.awt.Color(204, 204, 255));
