@@ -11,7 +11,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 
 /**
@@ -75,8 +77,6 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Brayan\\Documents\\NetBeansProjects\\Servicio-Mec-nico\\imagen\\Login.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,7 +119,7 @@ public class login extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,61 +148,62 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     String correo = txtusuario.getText();
-    String password = jpassword.getText();  // Puedes cambiarlo si tienes campo específico para contraseña
+String password = jpassword.getText();
 
-    if (correo.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Datos incompletos");
-        return;
+if (correo.isEmpty() || password.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Datos incompletos");
+    return;
+}
+
+// Verificación Super Admin directa
+if (correo.equals("Admin") && password.equals("super123")) {
+   
+    this.dispose();
+    new AplicacionPrincipal().setVisible(true);
+    return;
+}
+
+try {
+    Connection con = ConexionBD.conectar();
+    System.out.println("Conexión realizada correctamente");
+
+    String sql = "SELECT c.nombre, r.nombre AS rol " +
+                 "FROM clientes c " +
+                 "JOIN roles r ON c.rol = r.id " +
+                 "WHERE c.correo = ? AND c.password = ?";
+
+    PreparedStatement ps = con.prepareStatement(sql);
+    ps.setString(1, correo);
+    ps.setString(2, password);
+
+    ResultSet rs = ps.executeQuery();
+
+    if (rs.next()) {
+        String nombre = rs.getString("nombre");
+        String rol = rs.getString("rol");
+
+       
+        this.dispose();
+
+        // Lanzar AplicacionPrincipal en el hilo gráfico
+        SwingUtilities.invokeLater(() -> {
+            AplicacionPrincipal principal = new AplicacionPrincipal();
+            principal.setLocationRelativeTo(null);
+            principal.setVisible(true);
+        });
+    } else {
+        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
     }
 
-    try {
-        Connection con = ConexionBD.conectar();
-        String sql = "SELECT c.nombre, r.nombre AS rol " +
-                     "FROM clientes c " +
-                     "JOIN roles r ON c.rol = r.id " +
-                     "WHERE c.correo = ? AND c.documento = ?"; // Aquí usamos "documento" como "contraseña"
+    rs.close();
+    ps.close();
+    con.close();
 
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, correo);
-        ps.setString(2, password);  // Aquí deberías tener un campo de contraseña real en la base
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(null, "Error de conexión o consulta: " + ex.getMessage());
+    ex.printStackTrace();
+}
 
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            String nombre = rs.getString("nombre");
-            String rol = rs.getString("rol");
-
-            switch (rol.toLowerCase()) {
-                case "admin":
-                    JOptionPane.showMessageDialog(null, "Bienvenido Admin " + nombre);
-                    new AplicacionPrincipal().setVisible(true);
-                    break;
-                case "mecanico":
-                    JOptionPane.showMessageDialog(null, "Bienvenido Mecánico " + nombre);
-                    // new VentanaMecanico().setVisible(true);
-                    break;
-                case "cliente":
-                    JOptionPane.showMessageDialog(null, "Bienvenido Cliente " + nombre);
-                    // new VentanaCliente().setVisible(true);
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Rol no reconocido.");
-            }
-
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-        }
-
-        rs.close();
-        ps.close();
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error en el login: " + e.getMessage());
-    }
-
-
-      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
