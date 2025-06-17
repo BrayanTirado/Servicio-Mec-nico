@@ -1,0 +1,4 @@
+==== FACTURA ====
+Producto: Papapapa2, Cantidad: 4, Precio: 12000.0, Subtotal: 48000.0
+
+TOTAL: 48000.0

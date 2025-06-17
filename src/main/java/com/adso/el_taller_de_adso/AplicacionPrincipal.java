@@ -11,11 +11,13 @@ import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
 import com.adso.el_taller_de_adso.servicios.HistorialServicios;
 import com.adso.el_taller_de_adso.clientes.MarcoClientes;
 import com.adso.el_taller_de_adso.clientes.MarcoGestionClientes;
+import com.adso.el_taller_de_adso.inventario.FacturacionProductos;
 import com.adso.el_taller_de_adso.reportes.reporte_cliente;
 import com.adso.el_taller_de_adso.reportes.ingresos_generados;
 import com.adso.el_taller_de_adso.reportes.reporte_fecha;
 import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
 import com.adso.el_taller_de_adso.inventario.FormularioProducto;
+import com.adso.el_taller_de_adso.inventario.StockBajo;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -56,6 +58,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
 
@@ -181,6 +185,22 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem1);
 
+        jMenuItem5.setText("Ver Stocks Bajos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem5);
+
+        jMenuItem6.setText("Hacer Pedido");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem6);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -274,6 +294,20 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         formularioproducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        StockBajo stockbajo = new StockBajo();
+        desktopPane.add(stockbajo);
+        stockbajo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        FacturacionProductos facturacionproductos = new FacturacionProductos();
+        desktopPane.add(facturacionproductos);
+        facturacionproductos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
                                                  
                    
     public static void main(String args[]) {
@@ -297,6 +331,8 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem menuItemConsultaVehiculos;
     private javax.swing.JMenuItem menuItemGestionServicios;
     private javax.swing.JMenuItem menuItemGestionarClientes;
