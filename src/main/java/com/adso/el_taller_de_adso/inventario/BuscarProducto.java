@@ -21,14 +21,13 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
 
     public BuscarProducto() {
         initComponents();
-    modeloTabla = new DefaultTableModel(new String[]{"ID", "Nombre", "Descripción", "Precio", "Stock"}, 0);
-    tablaProductos.setModel(modeloTabla);
-    cargarProductos(); 
-    tablaProductos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-    tablaProductos.setSelectionBackground(new java.awt.Color(200, 255, 200)); 
-    tablaProductos.setSelectionForeground(new java.awt.Color(0, 0, 0)); 
-
-}
+        modeloTabla = new DefaultTableModel(new String[]{"ID", "Nombre", "Descripción", "Precio", "Stock"}, 0);
+        tablaProductos.setModel(modeloTabla);
+        cargarProductos(); 
+        tablaProductos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
+        tablaProductos.setSelectionBackground(new java.awt.Color(200, 255, 200)); 
+        tablaProductos.setSelectionForeground(new java.awt.Color(0, 0, 0)); 
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -148,47 +147,42 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         try {
-        String idTexto = txtBuscar.getText().trim();
-
-        if (idTexto.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID para buscar.");
-            return;
+            String nombre = txtBuscar.getText().trim();
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un nombre para buscar.");
+                return;
+            }
+            
+            Producto productoEncontrado = dao.buscarPorNombre(nombre);
+            if (productoEncontrado != null) {
+                listaProductos.remove(productoEncontrado);
+                listaProductos.add(0, productoEncontrado);
+                actualizarTabla();
+                resaltarProductoEnTabla(productoEncontrado.getId());
+                JOptionPane.showMessageDialog(this, "Producto encontrado: " + productoEncontrado.getNombre());
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró ningún producto con ese nombre: " + nombre);
+                txtBuscar.setText("");
+            }
+        } catch (SQLException ex) {
+            logger.log(java.util.logging.Level.SEVERE, "Error al buscar producto", ex);
+            JOptionPane.showMessageDialog(this, "Error al buscar en la base de datos.");
         }
-
-        int id = Integer.parseInt(idTexto);
-        Producto productoEncontrado = dao.buscarPorId(id);
-
-        if (productoEncontrado != null) {
-            listaProductos.remove(productoEncontrado);
-            listaProductos.add(0, productoEncontrado);
-            actualizarTabla();
-            resaltarProductoEnTabla(id);
-            JOptionPane.showMessageDialog(this, "Producto encontrado: " + productoEncontrado.getNombre());
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró ningún producto con ID: " + id);
-            txtBuscar.setText("");
-        }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID válido (número entero).");
-    } catch (SQLException ex) {
-        logger.log(java.util.logging.Level.SEVERE, "Error al buscar producto", ex);
-        JOptionPane.showMessageDialog(this, "Error al buscar en la base de datos.");
-    }
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
  private void resaltarProductoEnTabla(int id) {
-    for (int i = 0; i < tablaProductos.getRowCount(); i++) {
-        Object valorId = tablaProductos.getValueAt(i, 0);
-        if (valorId != null && Integer.parseInt(valorId.toString()) == id) {
-            tablaProductos.setRowSelectionInterval(i, i);
-            tablaProductos.scrollRectToVisible(tablaProductos.getCellRect(i, 0, true));
-            break;
+        for (int i = 0; i < tablaProductos.getRowCount(); i++) {
+            Object valorId = tablaProductos.getValueAt(i, 0);
+            if (valorId != null && Integer.parseInt(valorId.toString()) == id) {
+                tablaProductos.setRowSelectionInterval(i, i);
+                tablaProductos.scrollRectToVisible(tablaProductos.getCellRect(i, 0, true));
+                break;
+            }
         }
     }
-}
 
     private void cargarProductos() {
         try {
@@ -212,7 +206,6 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
             });
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnbuscar;
     private javax.swing.JLabel jLabel6;
