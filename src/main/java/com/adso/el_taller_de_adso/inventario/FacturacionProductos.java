@@ -202,6 +202,10 @@ public class FacturacionProductos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         btnAgregar.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N

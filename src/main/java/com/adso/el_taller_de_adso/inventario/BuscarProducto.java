@@ -41,6 +41,10 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
