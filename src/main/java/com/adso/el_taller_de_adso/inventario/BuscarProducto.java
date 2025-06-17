@@ -41,6 +41,8 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         tablaProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,18 +63,21 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tablaProductos);
 
         btnbuscar.setText("Buscar");
+        btnbuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbuscarActionPerformed(evt);
             }
         });
 
+        txtBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Rockwell", 3, 12)); // NOI18N
         jLabel6.setText("Buscar por ID");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -85,8 +90,8 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnbuscar)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(5, 5, 5)
@@ -101,7 +106,7 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                     .addComponent(btnbuscar)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(122, 122, 122)
