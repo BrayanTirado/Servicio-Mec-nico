@@ -19,6 +19,9 @@ import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
 import com.adso.el_taller_de_adso.inventario.FormularioProducto;
 import com.adso.el_taller_de_adso.inventario.StockBajo;
 import com.adso.el_taller_de_adso.inventario.BuscarProducto;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -42,7 +45,13 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         jMenu4 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        desktopPane = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon("/C:/Users/Brayan/Documents/NetBeansProjects/Servicio-Mec-nico/imagen/Imagen_Principal.png");
+        Image image = icon.getImage();
+        desktopPane = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g) {
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemVehiculos = new javax.swing.JMenuItem();
@@ -68,8 +77,6 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-
-        desktopPane.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
