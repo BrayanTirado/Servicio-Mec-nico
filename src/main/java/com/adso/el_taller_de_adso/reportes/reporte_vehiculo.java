@@ -50,7 +50,7 @@ public class reporte_vehiculo extends javax.swing.JInternalFrame{
         jLabel2.setText("Listar Servicios por Vehículo ");
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel4.setText("Id Automóvil:");
+        jLabel4.setText("Placa Automóvil:");
 
         txtVehiculo.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         txtVehiculo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -81,7 +81,7 @@ public class reporte_vehiculo extends javax.swing.JInternalFrame{
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,14 +118,15 @@ public class reporte_vehiculo extends javax.swing.JInternalFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Integer vehiculo_id = Integer.parseInt(txtVehiculo.getText());
-        jasper.reporte_vehiculo_id(vehiculo_id);
+        String placa = txtVehiculo.getText().trim();
+        jasper.reporte_vehiculo_placa(placa);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        Integer vehiculo_id = Integer.parseInt(txtVehiculo.getText());
-        jasper.reporte_vehiculo_id(vehiculo_id);
+        String placa = txtVehiculo.getText().trim();
+jasper.reporte_vehiculo_placa(placa);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVehiculoActionPerformed

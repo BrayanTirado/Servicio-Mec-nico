@@ -15,9 +15,9 @@ import com.adso.el_taller_de_adso.ConexionBD;
 
 public class reportecliente {
 
-    public void reporte_cliente_id(Integer cliente_id) {
+    public void reporte_cliente_documento(String documento) {
         try (Connection conn = ConexionBD.conectar()) {
-            String archivo ="reportes/reporte_cliente_id.jasper";
+            String archivo ="reportes/reporte_cliente.jasper";
             System.out.println("Cargando desde: " + archivo);
 
             File reportFile = new File(archivo);
@@ -28,7 +28,7 @@ public class reportecliente {
 
             JasperReport masterReport = (JasperReport) JRLoader.loadObject(reportFile);
             Map<String, Object> parametro = new HashMap<>();
-            parametro.put("cliente_id", cliente_id);
+            parametro.put("documento", documento);
             JasperPrint jasperPrint = JasperFillManager.fillReport(masterReport, parametro, conn);
 
             JasperViewer jviewer = new JasperViewer(jasperPrint, false);
