@@ -35,7 +35,7 @@ public class reporte_cliente extends javax.swing.JInternalFrame{
         jLabel2.setText("Listar Servicios por Usuario ");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel3.setText("Id Cliente:");
+        jLabel3.setText("Documento:");
 
         txtCliente.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         txtCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -57,7 +57,7 @@ public class reporte_cliente extends javax.swing.JInternalFrame{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -92,8 +92,8 @@ public class reporte_cliente extends javax.swing.JInternalFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Integer id_cliente = Integer.parseInt(txtCliente.getText());
-        jasper.reporte_cliente_id(id_cliente);
+        String documento = txtCliente.getText().trim();
+        jasper.reporte_cliente_documento(documento);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
