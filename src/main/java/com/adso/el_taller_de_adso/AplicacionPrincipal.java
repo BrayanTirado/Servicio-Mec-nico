@@ -5,8 +5,28 @@
 package com.adso.el_taller_de_adso;
 
 
+
 import com.adso.el_taller_de_adso.servicios.MarcoServicios2;
+
+import com.adso.el_taller_de_adso.servicios.MarcoServicios;
+import com.adso.el_taller_de_adso.vehiculos.ConsultaVehiculo;
+
 import com.adso.el_taller_de_adso.vehiculos.MarcoVehiculo;
+import com.adso.el_taller_de_adso.servicios.HistorialServicios;
+import com.adso.el_taller_de_adso.clientes.MarcoClientes;
+import com.adso.el_taller_de_adso.clientes.MarcoGestionClientes;
+import com.adso.el_taller_de_adso.inventario.FacturacionProductos;
+import com.adso.el_taller_de_adso.reportes.reporte_cliente;
+import com.adso.el_taller_de_adso.reportes.ingresos_generados;
+import com.adso.el_taller_de_adso.reportes.reporte_fecha;
+import com.adso.el_taller_de_adso.reportes.reporte_vehiculo;
+import com.adso.el_taller_de_adso.inventario.FormularioProducto;
+import com.adso.el_taller_de_adso.inventario.StockBajo;
+import com.adso.el_taller_de_adso.inventario.BuscarProducto;
+import com.adso.el_taller_de_adso.inventario.EditarProducto;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class AplicacionPrincipal extends javax.swing.JFrame {
     
@@ -28,27 +48,57 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
+        jMenu4 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
+        jMenu7 = new javax.swing.JMenu();
+        ImageIcon icon = new ImageIcon("/C:/Users/Brayan/Documents/NetBeansProjects/Servicio-Mec-nico/imagen/Imagen_Principal.png");
+        Image image = icon.getImage();
+        desktopPane = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g) {
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuItemVehiculos = new javax.swing.JMenuItem();
+        menuItemConsultaVehiculos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        menuItemGestionServicios = new javax.swing.JMenuItem();
+        menuitemHistorialServicios = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        menuItemRegistrarClientes = new javax.swing.JMenuItem();
+        menuItemGestionarClientes = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        menuItemReporte_Cliente = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+
+        jMenu4.setText("jMenu4");
+
+        jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1249, Short.MAX_VALUE)
+            .addGap(0, 1187, Short.MAX_VALUE)
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 717, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("vehiculos");
+        jMenu1.setText("Vehículos");
 
         menuItemVehiculos.setText("Gestión de Vehículos");
         menuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -58,19 +108,140 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(menuItemVehiculos);
 
+        menuItemConsultaVehiculos.setText("Consulta del vehiculo");
+        menuItemConsultaVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConsultaVehiculosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemConsultaVehiculos);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Servicios");
 
-        jMenuItem1.setText("Gestion de servicios");
+        menuItemGestionServicios.setText("Gestion de servicios");
+        menuItemGestionServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemGestionServiciosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemGestionServicios);
+
+        menuitemHistorialServicios.setText("Historial de servicios");
+        menuitemHistorialServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitemHistorialServiciosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuitemHistorialServicios);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Clientes");
+
+        menuItemRegistrarClientes.setText("Registrar clientes");
+        menuItemRegistrarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRegistrarClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemRegistrarClientes);
+
+        menuItemGestionarClientes.setText("Gestionar clientes");
+        menuItemGestionarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemGestionarClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuItemGestionarClientes);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu5.setText("Reportes");
+
+        menuItemReporte_Cliente.setText("Servicios por cliente");
+        menuItemReporte_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemReporte_ClienteActionPerformed(evt);
+            }
+        });
+        jMenu5.add(menuItemReporte_Cliente);
+
+        jMenuItem2.setText("Servicios por vehículo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Servicios por fecha");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
+        jMenuItem4.setText("Ingresos generados");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu6.setText("Inventarios");
+
+        jMenuItem1.setText("Agregar producto");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu6.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItem5.setText("Ver Stocks Bajos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem5);
+
+        jMenuItem6.setText("Hacer Pedido");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem6);
+
+        jMenuItem7.setText("Buscar Producto");
+        jMenuItem7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem7MouseClicked(evt);
+            }
+        });
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem7);
+
+        jMenuItem8.setText("Editar Producto");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -78,18 +249,15 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVehiculosActionPerformed
@@ -98,12 +266,108 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
         marcoVehiculo.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_menuItemVehiculosActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItemGestionServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGestionServiciosActionPerformed
         // TODO add your handling code here:
         MarcoServicios2 marcoServicios = new MarcoServicios2();
         desktopPane.add(marcoServicios);
-       marcoServicios.setVisible(true); 
+        marcoServicios.setVisible(true); 
+    }//GEN-LAST:event_menuItemGestionServiciosActionPerformed
+
+    private void menuItemConsultaVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaVehiculosActionPerformed
+        ConsultaVehiculo consultaVehiculo = new ConsultaVehiculo();
+        desktopPane.add(consultaVehiculo);
+        consultaVehiculo.setVisible(true);
+    }//GEN-LAST:event_menuItemConsultaVehiculosActionPerformed
+
+    private void menuitemHistorialServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitemHistorialServiciosActionPerformed
+        // TODO add your handling code here:
+        HistorialServicios historialServicios = new HistorialServicios();
+        desktopPane.add(historialServicios);
+        historialServicios.setVisible(true); 
+    }//GEN-LAST:event_menuitemHistorialServiciosActionPerformed
+
+    private void menuItemRegistrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRegistrarClientesActionPerformed
+        MarcoClientes marcoClientes = new MarcoClientes();
+        desktopPane.add(marcoClientes);
+        marcoClientes.setVisible(true);
+    }//GEN-LAST:event_menuItemRegistrarClientesActionPerformed
+
+    private void menuItemGestionarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGestionarClientesActionPerformed
+        MarcoGestionClientes marcoGestionClientes = new MarcoGestionClientes();
+        desktopPane.add(marcoGestionClientes);
+        marcoGestionClientes.setVisible(true);
+    }//GEN-LAST:event_menuItemGestionarClientesActionPerformed
+
+    private void menuItemReporte_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReporte_ClienteActionPerformed
+        // TODO add your handling code here:
+        reporte_cliente reportecliente = new reporte_cliente();
+        desktopPane.add(reportecliente);
+        reportecliente.setVisible(true);
+       
+    }//GEN-LAST:event_menuItemReporte_ClienteActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        reporte_vehiculo reportevehiculo = new reporte_vehiculo();
+        desktopPane.add(reportevehiculo);
+        reportevehiculo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        reporte_fecha reportefecha = new reporte_fecha();
+        desktopPane.add(reportefecha);
+        reportefecha.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ingresos_generados reporteingresos = new ingresos_generados();
+        desktopPane.add(reporteingresos);
+        reporteingresos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FormularioProducto formularioproducto = new FormularioProducto();
+        desktopPane.add(formularioproducto);
+        formularioproducto.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        StockBajo stockbajo = new StockBajo();
+        desktopPane.add(stockbajo);
+        stockbajo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        FacturacionProductos facturacionproductos = new FacturacionProductos();
+        desktopPane.add(facturacionproductos);
+        facturacionproductos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         BuscarProducto buscarProducto = new BuscarProducto();
+        desktopPane.add(buscarProducto);
+        buscarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem7MouseClicked
+        // TODO add your handling code here:
+        BuscarProducto buscarProducto = new BuscarProducto();
+        desktopPane.add(buscarProducto);
+        buscarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7MouseClicked
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        EditarProducto editarProducto = new EditarProducto();
+        desktopPane.add(editarProducto);
+        editarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
                                                  
                    
@@ -117,10 +381,29 @@ public class AplicacionPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem menuItemConsultaVehiculos;
+    private javax.swing.JMenuItem menuItemGestionServicios;
+    private javax.swing.JMenuItem menuItemGestionarClientes;
+    private javax.swing.JMenuItem menuItemRegistrarClientes;
+    private javax.swing.JMenuItem menuItemReporte_Cliente;
     private javax.swing.JMenuItem menuItemVehiculos;
+    private javax.swing.JMenuItem menuitemHistorialServicios;
     // End of variables declaration//GEN-END:variables
 }

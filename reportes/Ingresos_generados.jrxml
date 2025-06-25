@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Ingresos_generados" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3b158d9-92b2-42dc-a5c0-5b82d4023adf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="reportes"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="fecha_inicio" class="java.util.Date"/>
+	<parameter name="fecha_fin" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT 
+    fecha,
+    SUM(costo) AS ingresos_totales
+FROM 
+    servicios
+WHERE 
+    fecha BETWEEN $P{fecha_inicio} AND $P{fecha_fin}
+GROUP BY 
+    fecha
+ORDER BY 
+    fecha]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="servicios"/>
+	</field>
+	<field name="ingresos_totales" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ingresos_totales"/>
+		<property name="com.jaspersoft.studio.field.label" value="ingresos_totales"/>
+	</field>
+	<group name="fechas_grupo">
+		<groupExpression><![CDATA[$F{fecha}]]></groupExpression>
+	</group>
+	<title>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="560" height="30" forecolor="#3B5CED" uuid="4e30f638-2d89-40ff-85de-bdd7bac3da1d"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="SansSerif" size="21" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taller Mecánico de ADSO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="37" width="560" height="30" forecolor="#3B5CED" uuid="7ee8de96-03ff-4d85-8745-aab228bb5fb4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#3B5CED"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[     Desde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="40" width="100" height="30" forecolor="#3B5CED" uuid="fae55fa7-b99d-4cad-ab49-d90f34b67066">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="37" width="100" height="30" forecolor="#3B5CED" uuid="ad59693c-59ad-4744-ad98-45e1fb27bd26">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="007f95ba-5749-4cc4-9a00-4c43cfac04a7"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="30" uuid="a5d802b9-bb63-4ee2-9d9c-b7fcc1e4a9da"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ingresos Generados ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="130" height="30" uuid="17212b6a-5b72-416b-901f-960f8d541b7e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="10" width="130" height="30" uuid="fcb31840-fdd3-4bea-bc61-9d5adf5d1cef"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="10" width="135" height="30" uuid="d444f662-6f43-40b1-b292-6d38ca78795d"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ingresos_totales}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

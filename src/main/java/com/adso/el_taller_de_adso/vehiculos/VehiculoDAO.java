@@ -11,17 +11,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 public class VehiculoDAO {
-    
+    private static final String INSERT_VEHICULO = "INSERT INTO vehiculos (placa, marca, modelo, anio, tipo, cliente_id) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_VEHICULO = "UPDATE vehiculos SET placa = ?, marca = ?, modelo = ?, anio = ?, tipo = ?, cliente_id = ? WHERE id = ?";
+    private static final String DELETE_VEHICULO = "DELETE FROM vehiculos WHERE id = ?";
+    private static final String SELECT_VEHICULOS = "SELECT * FROM vehiculos";
+    private static final String SELECT_CLIENTES = "SELECT id, nombre FROM clientes";
+    private static final String SELECT_HISTORIAL = "SELECT fecha, tipo, costo, pagado FROM servicios WHERE vehiculo_id = ?";
 
-    
-    // Registrar un vehículo (ya implementado)
     public void registrarVehiculo(Vehiculo vehiculo) {
-        String sql = "INSERT INTO vehiculos (placa, marca, modelo, anio, tipo, cliente_id) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(INSERT_VEHICULO)) {
             stmt.setString(1, vehiculo.getPlaca());
             stmt.setString(2, vehiculo.getMarca());
             stmt.setString(3, vehiculo.getModelo());
@@ -29,19 +29,38 @@ public class VehiculoDAO {
             stmt.setString(5, vehiculo.getTipo());
             stmt.setInt(6, vehiculo.getClienteId());
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Vehículo registrado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al registrar vehículo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Error al registrar vehículo: " + e.getMessage());
         }
     }
 
-    // Listar todos los vehículos
+    public void actualizarVehiculo(Vehiculo vehiculo) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(UPDATE_VEHICULO)) {
+            stmt.setString(1, vehiculo.getPlaca());
+            stmt.setString(2, vehiculo.getMarca());
+            stmt.setString(3, vehiculo.getModelo());
+            stmt.setInt(4, vehiculo.getAnio());
+            stmt.setString(5, vehiculo.getTipo());
+            stmt.setInt(6, vehiculo.getClienteId());
+            stmt.setInt(7, vehiculo.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al actualizar vehículo: " + e.getMessage());
+        }
+    }
+
+    public void eliminarVehiculo(int id) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(DELETE_VEHICULO)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar vehículo: " + e.getMessage());
+        }
+    }
+
     public List<Vehiculo> listarVehiculos() {
         List<Vehiculo> vehiculos = new ArrayList<>();
-        String sql = "SELECT * FROM vehiculos";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(SELECT_VEHICULOS); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Vehiculo vehiculo = new Vehiculo(
                     rs.getInt("id"),
@@ -55,83 +74,59 @@ public class VehiculoDAO {
                 vehiculos.add(vehiculo);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al listar vehículos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Error al listar vehículos: " + e.getMessage());
         }
         return vehiculos;
     }
 
-    // Actualizar un vehículo
-    public void actualizarVehiculo(Vehiculo vehiculo) {
-        String sql = "UPDATE vehiculos SET placa = ?, marca = ?, modelo = ?, anio = ?, tipo = ?, cliente_id = ? WHERE id = ?";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, vehiculo.getPlaca());
-            stmt.setString(2, vehiculo.getMarca());
-            stmt.setString(3, vehiculo.getModelo());
-            stmt.setInt(4, vehiculo.getAnio());
-            stmt.setString(5, vehiculo.getTipo());
-            stmt.setInt(6, vehiculo.getClienteId());
-            stmt.setInt(7, vehiculo.getId());
-            int rows = stmt.executeUpdate();
-            if (rows > 0) {
-                JOptionPane.showMessageDialog(null, "Vehículo actualizado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontró el vehículo con ID: " + vehiculo.getId(), "Error", JOptionPane.ERROR_MESSAGE);
+    public List<String> listarClientes() {
+        List<String> clientes = new ArrayList<>();
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(SELECT_CLIENTES); ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                clientes.add(rs.getInt("id") + " - " + rs.getString("nombre"));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar vehículo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Error al listar clientes: " + e.getMessage());
         }
+        return clientes;
     }
 
-    // Eliminar un vehículo
-    public void eliminarVehiculo(int id) {
-        String sql = "DELETE FROM vehiculos WHERE id = ?";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            int rows = stmt.executeUpdate();
-            if (rows > 0) {
-                JOptionPane.showMessageDialog(null, "Vehículo eliminado con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontró el vehículo con ID: " + id, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar vehículo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    // Listar historial de servicios de un vehículo
     public List<String> listarHistorialServicios(int vehiculoId) {
         List<String> historial = new ArrayList<>();
-        String sql = "SELECT fecha, tipo, costo, pagado FROM servicios WHERE vehiculo_id = ?";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(SELECT_HISTORIAL)) {
             stmt.setInt(1, vehiculoId);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String servicio = String.format("Fecha: %s, Tipo: %s, Costo: %.2f, Pagado: %s",
-                    rs.getDate("fecha"), rs.getString("tipo"), rs.getDouble("costo"), rs.getBoolean("pagado") ? "Sí" : "No");
-                historial.add(servicio);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    String servicio = String.format("Fecha: %s, Tipo: %s, Costo: %.2f, Pagado: %b",
+                        rs.getDate("fecha"), rs.getString("tipo"), rs.getDouble("costo"), rs.getBoolean("pagado"));
+                    historial.add(servicio);
+                }
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al obtener historial: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Error al listar historial de servicios: " + e.getMessage());
         }
         return historial;
     }
 
-    // Listar clientes para el JComboBox
-    public List<String> listarClientes() {
-        List<String> clientes = new ArrayList<>();
-        String sql = "SELECT id, nombre, documento FROM clientes";
-        try (Connection conn = ConexionBD.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                clientes.add(rs.getInt("id") + " - " + rs.getString("nombre") + " (" + rs.getString("documento") + ")");
+     public Vehiculo buscarVehiculoPorPlaca(String placa) {
+    try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vehiculos WHERE placa = ?")) {
+        stmt.setString(1, placa);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return new Vehiculo(
+                    rs.getInt("id"),
+                    rs.getString("placa"),
+                    rs.getString("marca"),
+                    rs.getString("modelo"),
+                    rs.getInt("anio"),
+                    rs.getString("tipo"),
+                    rs.getInt("cliente_id")
+                );
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al listar clientes: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return clientes;
+    } catch (SQLException e) {
+        throw new RuntimeException("Error al buscar vehículo por placa: " + e.getMessage());
     }
+    return null; 
+}
 }
